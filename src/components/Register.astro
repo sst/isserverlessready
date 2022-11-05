@@ -1,0 +1,86 @@
+---
+import "material-icons/iconfont/filled.css";
+---
+<style>
+  section {
+    display: flex;
+    box-sizing: border-box;
+    padding: 100rem calc(var(--spacing-unit) * 2);
+    width: 100vw;
+    height: auto;
+    position: relative;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-image: url('../images/register-bg.png');
+  }
+  h2 {
+    margin: 0 0 23rem;
+    font-size: 60rem;
+    text-shadow: 2px 5px 0 #000;
+    text-transform: uppercase;
+    line-height: 0.9;
+  }
+  p {
+    margin: 0;
+    color: var(--theme-text-light);
+    font-size: 20rem;
+  }
+  form {
+    margin-left: 180rem;
+    flex: 1 1 50%;
+  }
+  input, button {
+    width: 100%;
+    max-width: 444px;
+    box-sizing: border-box;
+  }
+  input {
+    margin-bottom: var(--spacing-unit);
+    padding: 23rem 17rem 19rem;
+    outline: none;
+    border-radius: 2px;
+    font-size: 18rem;
+    line-height: 20rem;
+    display: block;
+    background: none;
+    border: 1px solid var(--theme-text);
+  }
+  button {
+    background: var(--theme-accent);
+    border: none;
+    padding: 16rem;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  button:hover {
+    background: hsla(var(--color-base-orange), 50%, 1);
+  }
+  button span {
+    text-shadow:
+      1px 1px 0 hsla(268, 12%, 39%, 1),
+      -1px -1px 0 hsla(var(--color-orange), 0.4);
+  }
+  button span:first-child {
+    font-size: 24rem;
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+  }
+  button span.material-icons {
+    margin-left: -5px;
+    font-size: 32rem;
+    vertical-align: -7px;
+  }
+</style>
+<section id="register">
+  <div class="copy">
+    <h2>Book your spot!</h2>
+    <p>Make sure to register and we'll send you all the details for the event.</p>
+  </div>
+  <form>
+    <input type="text" placeholder="Name" />
+    <input type="email" placeholder="Email address" />
+    <button type="submit">
+      <span>Register</span><span class="material-icons">play_arrow</span>
+    </button>
+  </form>
+</section>

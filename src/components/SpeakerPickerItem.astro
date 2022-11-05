@@ -1,0 +1,43 @@
+---
+interface Props {
+  active?: boolean;
+  logo: string;
+  width: string;
+  height: string;
+  name: string;
+}
+
+const { active = false, logo, width, height, name } = Astro.props;
+const activeCs = active ? "active" : "";
+---
+<style>
+  .item {
+    display: block;
+    opacity: 0.5;
+    display: flex;
+    align-items: center;
+    height: 86px;
+  }
+  .item.active {
+    opacity: 1;
+  }
+  p {
+    margin: 0;
+    font-size: 20rem;
+    font-weight: bold;
+    color: var(--theme-text-lighter);
+  }
+  .image {
+    flex: 0 0 auto;
+    min-width: 200px;
+  }
+  img {
+    display: block;
+  }
+</style>
+<div class={`item ${activeCs}`}>
+  <div class="image">
+    <img src={logo} width={width} height={height} alt={name} />
+  </div>
+  <p>{name}</p>
+</div>

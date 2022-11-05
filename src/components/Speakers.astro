@@ -1,0 +1,64 @@
+---
+import speakers from "../speakers";
+
+import Speaker from "./Speaker.astro";
+import SpeakerPickerItem from "./SpeakerPickerItem.astro";
+
+import bunMono from "../images/companies/bun-mono.png";
+import upstashMono from "../images/companies/upstash-mono.png";
+import planetscaleMono from "../images/companies/planetscale-mono.png";
+
+import bun from "../images/companies/bun.png";
+import jarred from "../images/speakers/jarred.png";
+import jarredName from "../images/speakers/jarred-name.png";
+
+const speaker = speakers["jarredsumner"];
+---
+<style>
+  section {
+    padding: 124rem calc(var(--spacing-unit) * 2) 105rem;
+    box-sizing: border-box;
+    width: 100vw;
+    height: auto;
+    position: relative;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-image: url('../images/body-bg.png');
+  }
+  h2 {
+    margin: 0;
+    font-size: 60rem;
+    text-transform: uppercase;
+    text-shadow: 2px 5px 0 #000;
+  }
+  .speakers {
+    display: flex;
+    align-items: center;
+  }
+  .picker {
+    flex: 0 0 auto;
+  }
+  .speaker {
+    margin-left: var(--spacing-unit);
+    min-width: 0;
+  }
+</style>
+
+<section>
+  <h2>Speakers</h2>
+  <div class="speakers">
+    <div class="picker">
+      <SpeakerPickerItem active={true} logo={bunMono} width="145" height="57" name="Jarred Sumner" />
+      <SpeakerPickerItem logo={planetscaleMono} width="169" height="27" name="Sam Lambert" />
+      <SpeakerPickerItem logo={upstashMono} width="143" height="41" name="Enes Akar" />
+      <SpeakerPickerItem logo={planetscaleMono} width="169" height="27" name="Fred K. Schott" />
+    </div>
+    <div class="speaker">
+      <Speaker title={speaker.title} twitter={speaker.twitter} link={speaker.link} color={speaker.color}>
+        <img src={bun} width="315" height="125" alt={speaker.company} slot="logo" />
+        <img src={jarred} width="524" height="554" alt={speaker.name} slot="image" />
+        <img src={jarredName} width="544" height="67" alt={speaker.name} slot="name" />
+      </Speaker>
+    </div>
+  </div>
+</section>
