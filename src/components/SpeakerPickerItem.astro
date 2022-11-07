@@ -1,14 +1,12 @@
 ---
 interface Props {
-  active?: boolean;
   logo: string;
   width: string;
   height: string;
   name: string;
 }
 
-const { active = false, logo, width, height, name } = Astro.props;
-const activeCs = active ? "active" : "";
+const { logo, width, height, name } = Astro.props;
 ---
 <style>
   .item {
@@ -17,9 +15,6 @@ const activeCs = active ? "active" : "";
     display: flex;
     align-items: center;
     height: 86px;
-  }
-  .item.active {
-    opacity: 1;
   }
   p {
     margin: 0;
@@ -35,7 +30,7 @@ const activeCs = active ? "active" : "";
     display: block;
   }
 </style>
-<div class={`item ${activeCs}`}>
+<div class="item">
   <div class="image">
     <img src={logo} width={width} height={height} alt={name} />
   </div>

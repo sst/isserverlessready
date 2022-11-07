@@ -1,18 +1,8 @@
 ---
-import speakers from "../speakers";
+import { SPEAKERS } from "../config";
 
 import Speaker from "./Speaker.astro";
 import SpeakerPickerItem from "./SpeakerPickerItem.astro";
-
-import bunMono from "../images/companies/bun-mono.png";
-import upstashMono from "../images/companies/upstash-mono.png";
-import planetscaleMono from "../images/companies/planetscale-mono.png";
-
-import bun from "../images/companies/bun.png";
-import jarred from "../images/speakers/jarred.png";
-import jarredName from "../images/speakers/jarred-name.png";
-
-const speaker = speakers["jarredsumner"];
 ---
 <style>
   section {
@@ -31,34 +21,136 @@ const speaker = speakers["jarredsumner"];
     text-transform: uppercase;
     text-shadow: 2px 5px 0 #000;
   }
-  .speakers {
+  #speakers {
     display: flex;
     align-items: center;
   }
-  .picker {
+  .tabs {
     flex: 0 0 auto;
+  }
+  .tab-button {
+    opacity: 0.5;
+    cursor: pointer;
+  }
+  .tab-button.active {
+    opacity: 1;
+    cursor: default;
   }
   .speaker {
     margin-left: var(--spacing-unit);
     min-width: 0;
   }
-</style>
+  .tab-content {
+    animation: fadeEffect 1s;
+  }
+  .profile-image {
+    display: block;
+  }
+  #speakers.ready .tab-content {
+    /** Disabled animation for first load */
+    animation-duration: 0s;
+  }
+  .tab-content:not(:first-child) {
+    display: none;
+  }
 
+  @keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const tabs = document.querySelectorAll(".tab-content") as NodeListOf<HTMLElement>;
+  const buttons = document.querySelectorAll(".tab-button") as NodeListOf<HTMLElement>;
+
+  function openTab(ev: Event, id?: string) {
+    const target = ev.target as HTMLElement;
+
+    tabs.forEach(tab => {
+      tab.style.display = tab.dataset.id === id ? "block" : "none";
+    });
+
+    buttons.forEach(button => {
+      if (button.dataset.id === id) {
+        button.classList.add("active");
+      } else {
+        button.classList.remove("active");
+      }
+    });
+  }
+
+  setTimeout(() => {
+    document.getElementById("speakers")?.classList.remove("ready");
+  }, 1000);
+
+  buttons.forEach(button => {
+    button.addEventListener("click", ev => openTab(ev, button.dataset.id));
+  });
+});
+</script>
 <section>
   <h2>Speakers</h2>
-  <div class="speakers">
-    <div class="picker">
-      <SpeakerPickerItem active={true} logo={bunMono} width="145" height="57" name="Jarred Sumner" />
-      <SpeakerPickerItem logo={planetscaleMono} width="169" height="27" name="Sam Lambert" />
-      <SpeakerPickerItem logo={upstashMono} width="143" height="41" name="Enes Akar" />
-      <SpeakerPickerItem logo={planetscaleMono} width="169" height="27" name="Fred K. Schott" />
+  <div id="speakers" class="ready">
+    <div class="tabs">
+      {Object.keys(SPEAKERS).map((id, i) => {
+        const speaker = SPEAKERS[id];
+        const { name, logoMono } = speaker;
+        const activeCs = i === 0 ? "active" : "";
+
+        return (
+          <div class={`tab-button ${activeCs}`} data-id={id}>
+            <SpeakerPickerItem
+              name={name}
+              logo={logoMono.src}
+              width={logoMono.width}
+              height={logoMono.height}
+            />
+          </div>
+        );
+      })}
     </div>
     <div class="speaker">
-      <Speaker title={speaker.title} twitter={speaker.twitter} link={speaker.link} color={speaker.color}>
-        <img src={bun} width="315" height="125" alt={speaker.company} slot="logo" />
-        <img src={jarred} width="524" height="554" alt={speaker.name} slot="image" />
-        <img src={jarredName} width="544" height="67" alt={speaker.name} slot="name" />
-      </Speaker>
+      {Object.keys(SPEAKERS).map((id, i) => {
+        const speaker = SPEAKERS[id];
+        const {
+          name, link, title, color, twitter, logo, nameImage, profile
+        } = speaker;
+
+        return (
+          <div class="tab-content" data-id={id}>
+            <Speaker
+              link={link}
+              title={title}
+              color={color}
+              twitter={twitter}
+            >
+              <img
+                slot="logo"
+                src={logo.src}
+                width={logo.width}
+                height={logo.height}
+                alt={speaker.company}
+              />
+              <img
+                slot="image"
+                class="profile-image"
+                src={profile.src}
+                width={profile.width}
+                height={profile.height}
+                alt={speaker.name}
+              />
+              <img
+                slot="name"
+                src={nameImage.src}
+                width={nameImage.width}
+                height={nameImage.height}
+                alt={name}
+              />
+            </Speaker>
+          </div>
+        );
+      })}
     </div>
   </div>
 </section>

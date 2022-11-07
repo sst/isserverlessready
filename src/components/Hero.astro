@@ -1,7 +1,7 @@
 ---
 import "material-icons/iconfont/filled.css";
 
-import config from "../config";
+import { SITE } from "../config";
 ---
 <style>
   .hero {
@@ -53,8 +53,8 @@ import config from "../config";
 
 <div class="hero">
   <h6>December 6</h6>
-  <h1>{config.title}</h1>
-  <p>{config.description}</p>
+  <h1>{SITE.title}</h1>
+  <p>{SITE.description}</p>
   <a href="#register" class="button">
     <span>Register</span><span class="material-icons">play_arrow</span>
   </a>

@@ -3,7 +3,7 @@ import "../styles/normalize.css";
 import "../styles/theme.css";
 import "../styles/index.css";
 
-import config from "../config";
+import { SITE } from "../config";
 
 import Head from "../components/Head.astro";
 import Footer from "../components/Footer.astro";
@@ -13,8 +13,8 @@ import Register from "../components/Register.astro";
 <html lang="en">
 	<head>
 		<Head />
-		<slot name="title"><title>{config.title}</title></slot>
-		<meta name="description" content={config.description} />
+		<slot name="title"><title>{SITE.title}</title></slot>
+		<meta name="description" content={SITE.description} />
 	</head>
 	<body>
     <slot />

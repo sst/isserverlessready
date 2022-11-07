@@ -1,47 +1,21 @@
 ---
-import config from "../../config";
-import speakers from "../../speakers";
+import { SITE, SPEAKERS } from "../../config";
 
 import Layout from "../../layouts/Layout.astro";
 
-import bun from "../../images/companies/bun.png";
-import jarred from "../../images/speakers/jarred.png";
-import jarredName from "../../images/speakers/jarred-name.png";
-
-import planetscale from "../../images/companies/planetscale.png";
-import fred from "../../images/speakers/fred.png";
-import fredName from "../../images/speakers/fred-name.png";
-
 import twitterIcon from "../../images/twitter.svg";
 
-interface SpeakerImage {
-  src: string;
-  width: string;
-  height: string;
-}
-
 export function getStaticPaths() {
-  const imagesMap: Record<string, Record<string, SpeakerImage>> = {
-    jarredsumner: {
-      logo: { src: bun, width: "234", height: "92", },
-      profile: { src: jarred, width: "524", height: "554", },
-      name: { src: jarredName, width: "544", height: "67", },
-    },
-    isamlambert: {
-      logo: { src: planetscale, width: "324", height: "81", },
-      profile: { src: fred, width: "616", height: "575", },
-      name: { src: fredName, width: "535", height: "68", },
-    },
-  };
-  return Object.keys(speakers).map(speaker => {
+  return Object.keys(SPEAKERS).map(speaker => {
     return {
       params: {speaker},
-      props: {speaker: speakers[speaker], img: imagesMap[speaker]}
+      props: {speaker: SPEAKERS[speaker]}
     };
   });
 }
 
-const { speaker, img } = Astro.props;
+const { speaker } = Astro.props;
+const { logo, profile, nameImage } = speaker;
 ---
 <style define:vars={{ speakerColor: speaker.color }}>
   .hero {
@@ -123,22 +97,22 @@ const { speaker, img } = Astro.props;
   }
 </style>
 <Layout>
-  <title slot="title">{speaker.name} / {config.title}</title>
+  <title slot="title">{speaker.name} / {SITE.title}</title>
   <div class="hero">
     <header>
-      <a href="/" class="home"><h3>{config.title}</h3></a>
+      <a href="/" class="home"><h3>{SITE.title}</h3></a>
       <a href="/" class="main">Main</a><span class="separator">&bull;</span><h1>{speaker.name}</h1>
     </header>
     <section>
       <div class="image">
-        <img src={img.profile.src} width={img.profile.width} height={img.profile.height} alt={speaker.name} />
+        <img src={profile.src} width={profile.width} height={profile.height} alt={speaker.name} />
       </div>
       <div class="content">
         <a target="_blank" href={speaker.link}>
-          <img src={img.logo.src} width={img.logo.width} height={img.logo.height} alt={speaker.company} />
+          <img src={logo.src} width={logo.width} height={logo.height} alt={speaker.company} />
         </a>
         <a target="_blank" href={`https://twitter.com/${speaker.twitter}`}>
-          <img src={img.name.src} width={img.name.width} height={img.name.height} alt={speaker.name} />
+          <img src={nameImage.src} width={nameImage.width} height={nameImage.height} alt={speaker.name} />
         </a>
         <h4>
           <span>{speaker.title}</span>
