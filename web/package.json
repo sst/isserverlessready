@@ -1,0 +1,18 @@
+{
+  "name": "@example/minimal",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "sst-env -- astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@serverless-stack/static-site-env": "^1.17.1",
+    "astro": "^1.6.0",
+    "material-icons": "^1.12.1"
+  }
+}

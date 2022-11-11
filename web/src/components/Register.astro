@@ -1,0 +1,200 @@
+---
+import "material-icons/iconfont/filled.css";
+---
+<style>
+  section {
+    display: flex;
+    box-sizing: border-box;
+    padding: 100rem calc(var(--spacing-unit) * 2);
+  }
+  h2 {
+    margin: 0 0 23rem;
+    font-size: 60rem;
+    text-shadow: 2px 5px 0 #000;
+    text-transform: uppercase;
+    line-height: 0.9;
+  }
+  p {
+    margin: 0;
+    color: var(--theme-text-light);
+    font-size: 20rem;
+  }
+  form {
+    margin-left: 180rem;
+    flex: 1 1 50%;
+  }
+  input, button {
+    width: 100%;
+    max-width: 444px;
+    box-sizing: border-box;
+  }
+  input {
+    margin-bottom: var(--spacing-unit);
+    padding: 23rem 17rem 19rem;
+    outline: none;
+    border-radius: 2px;
+    font-size: 18rem;
+    line-height: 20rem;
+    display: block;
+    background: none;
+    border: 1px solid var(--theme-text);
+  }
+  button {
+    --button-bg: var(--theme-accent);
+    --button-hover-bg: hsla(var(--color-base-orange), 50%, 1);
+    --button-animate-bg: hsla(var(--color-base-orange), 30%, 1);
+
+    background: var(--button-bg);
+    border: none;
+    padding: 16rem;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  button:not(:disabled):hover {
+    background: var(--button-hover-bg);
+  }
+  button.shake {
+    animation: shake 0.2s 2; 
+  }
+  button.loading {
+    cursor: wait;
+    animation: color 1s infinite;
+    animation-timing-function: ease;
+    animation-direction: alternate-reverse;
+  }
+  button.loading span {
+    opacity: 0.6;
+  }
+  button span {
+    text-shadow:
+      1px 1px 0 hsla(268, 12%, 39%, 1),
+      -1px -1px 0 hsla(var(--color-orange), 0.4);
+  }
+  button span:first-child {
+    font-size: 24rem;
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+  }
+  button span.material-icons {
+    margin-left: -5px;
+    font-size: 32rem;
+    vertical-align: -7px;
+  }
+  button span.material-icons:last-child {
+    display: none;
+  }
+
+  button:disabled {
+    cursor: default;
+    color: var(--theme-text-light);
+  }
+  button:disabled span:not(:last-child) {
+    display: none;
+  }
+  button:disabled span:last-child {
+    display: inline;
+  }
+
+  @media only screen and (max-width: 600px) {
+    section {
+      padding: 57rem calc(var(--spacing-unit) / 2);
+      text-align: center;
+      display: block;
+    }
+    h2 {
+      font-size: 55rem;
+      line-height: 1;
+    }
+    p {
+      font-size: 16rem;
+      line-height: 21rem;
+    }
+    form {
+      margin: 50rem 0 0;
+      max-width: auto;
+    }
+  }
+
+  @media only screen and (max-width: 320px) {
+    h2 {
+      font-size: 50rem;
+    }
+  }
+
+  @keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-2px, 0px) rotate(1deg); }
+    30% { transform: translate(2px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-2px, 1px) rotate(0deg); }
+    70% { transform: translate(2px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+  @keyframes color {
+    from {
+      background-color: var(--button-hover-bg);
+    }
+    to {
+      background-color: var(--button-animate-bg);
+    }
+  }
+</style>
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+    console.log(import.meta.env.PUBLIC_API_URL);
+    const button = document.querySelector("form > button") as HTMLButtonElement;
+
+    button.addEventListener("click", async ev => {
+      ev.preventDefault();
+
+      button.classList.remove("shake");
+      void button.offsetWidth;
+
+      const name = document.querySelector("form > input[type=text]") as HTMLInputElement;
+      const email = document.querySelector("form > input[type=email]") as HTMLInputElement;
+
+      if (name.value === "" || email.value === "") {
+        button.classList.add("shake");
+        return;
+      }
+
+      button.classList.add("loading");
+
+      const response = await fetch(import.meta.env.PUBLIC_API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: name.value,
+          email: email.value
+        })
+      });
+
+      button.classList.remove("loading");
+
+      if (response.status !== 200) {
+        button.classList.add("shake");
+      }
+      else {
+        button.disabled = true;
+      }
+    });
+  });
+</script>
+<section id="register">
+  <div class="copy">
+    <h2>Book your spot!</h2>
+    <p>Make sure to register and we'll send you all the details for the event.</p>
+  </div>
+  <form>
+    <input required type="text" placeholder="Name" />
+    <input required type="email" placeholder="Email address" />
+    <button type="submit">
+      <span>Register</span><span class="material-icons">play_arrow</span>
+      <span class="material-icons check">check</span>
+    </button>
+  </form>
+</section>

@@ -1,0 +1,222 @@
+---
+import { SPEAKERS } from "../config";
+
+import Speaker from "./Speaker.astro";
+import SpeakerMobile from "./SpeakerMobile.astro";
+import SpeakerPickerItem from "./SpeakerPickerItem.astro";
+---
+<style>
+  section {
+    padding: 124rem calc(var(--spacing-unit) * 2) 105rem;
+    box-sizing: border-box;
+  }
+  h2 {
+    margin: 0;
+    font-size: 60rem;
+    text-transform: uppercase;
+    text-shadow: 2px 5px 0 #000;
+  }
+  #speakers {
+    display: flex;
+    align-items: center;
+  }
+  ul.mobile {
+    display: none;
+  }
+  .tabs {
+    flex: 0 0 auto;
+  }
+  .tab-button {
+    opacity: 0.5;
+    cursor: pointer;
+  }
+  .tab-button.active {
+    opacity: 1;
+    cursor: default;
+  }
+  .speaker {
+    margin-left: var(--spacing-unit);
+    min-width: 0;
+  }
+  .tab-content {
+    animation: fadeEffect 1s;
+  }
+  .profile-image {
+    display: block;
+  }
+  #speakers.ready .tab-content {
+    /** Disabled animation for first load */
+    animation-duration: 0s;
+  }
+  .tab-content:not(:first-child) {
+    display: none;
+  }
+
+  @media only screen and (max-width: 600px) {
+    section {
+      padding: 125rem 0 105rem;
+    }
+    h2 {
+      margin-bottom: 50rem;
+      font-size: 55rem;
+      line-height: 1;
+      text-align: center;
+    }
+    .tabs, .speaker {
+      display: none;
+    }
+    ul.mobile {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      display: block;
+      list-style: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    ul.mobile li {
+      margin: 0;
+      display: block;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+  }
+  @media only screen and (max-width: 320px) {
+    h2 {
+      font-size: 50rem;
+    }
+  }
+
+  @keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const tabs = document.querySelectorAll(".tab-content") as NodeListOf<HTMLElement>;
+  const buttons = document.querySelectorAll(".tab-button") as NodeListOf<HTMLElement>;
+
+  function openTab(ev: Event, id?: string) {
+    const target = ev.target as HTMLElement;
+
+    tabs.forEach(tab => {
+      tab.style.display = tab.dataset.id === id ? "block" : "none";
+    });
+
+    buttons.forEach(button => {
+      if (button.dataset.id === id) {
+        button.classList.add("active");
+      } else {
+        button.classList.remove("active");
+      }
+    });
+  }
+
+  setTimeout(() => {
+    document.getElementById("speakers")?.classList.remove("ready");
+  }, 1000);
+
+  buttons.forEach(button => {
+    button.addEventListener("click", ev => openTab(ev, button.dataset.id));
+  });
+});
+</script>
+<section>
+  <h2>Speakers</h2>
+  <div id="speakers" class="ready">
+    <div class="tabs">
+      {Object.keys(SPEAKERS).map((id, i) => {
+        const speaker = SPEAKERS[id];
+        const { name, logoMono } = speaker;
+        const activeCs = i === 0 ? "active" : "";
+
+        return (
+          <div class={`tab-button ${activeCs}`} data-id={id}>
+            <SpeakerPickerItem
+              name={name}
+              logo={logoMono.src}
+              width={logoMono.width}
+              height={logoMono.height}
+            />
+          </div>
+        );
+      })}
+    </div>
+    <div class="speaker">
+      {Object.keys(SPEAKERS).map((id, i) => {
+        const speaker = SPEAKERS[id];
+        const {
+          name, link, title, color, twitter, logo, nameImage, profile
+        } = speaker;
+
+        return (
+          <div class="tab-content" data-id={id}>
+            <Speaker
+              link={link}
+              title={title}
+              color={color}
+              twitter={twitter}
+            >
+              <img
+                slot="logo"
+                src={logo.src}
+                width={logo.width}
+                height={logo.height}
+                alt={speaker.company}
+              />
+              <img
+                slot="image"
+                class="profile-image"
+                src={profile.src}
+                width={profile.width}
+                height={profile.height}
+                alt={speaker.name}
+              />
+              <img
+                slot="name"
+                src={nameImage.src}
+                width={nameImage.width}
+                height={nameImage.height}
+                alt={name}
+              />
+            </Speaker>
+          </div>
+        );
+      })}
+    </div>
+    <ul class="mobile">
+      {Object.keys(SPEAKERS).map((id, i) => {
+        const speaker = SPEAKERS[id];
+        const {
+          name, title, color, logoMonoSmall, twitter, profileSmall
+        } = speaker;
+
+        return (
+          <li>
+            <SpeakerMobile
+              name={name}
+              title={title}
+              color={color}
+              twitter={twitter}
+            >
+              <img
+                slot="logo"
+                src={logoMonoSmall.src}
+                width={logoMonoSmall.width}
+                height={logoMonoSmall.height}
+                alt={speaker.company}
+              />
+              <img
+                slot="image"
+                class="profile-image"
+                src={profileSmall.src}
+                width={profileSmall.width}
+                height={profileSmall.height}
+                alt={speaker.name}
+              />
+            </SpeakerMobile>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</section>
