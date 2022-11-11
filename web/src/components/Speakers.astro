@@ -8,7 +8,10 @@ import SpeakerPickerItem from "./SpeakerPickerItem.astro";
 <style>
   section {
     padding: 124rem calc(var(--spacing-unit) * 2) 105rem;
+    padding: var(--spacing-unit) calc(var(--spacing-unit) * 2) 105rem;
     box-sizing: border-box;
+    margin: 0 auto;
+    max-width: var(--max-width);
   }
   h2 {
     margin: 0;
@@ -19,6 +22,7 @@ import SpeakerPickerItem from "./SpeakerPickerItem.astro";
   #speakers {
     display: flex;
     align-items: center;
+    justify-content: space-between;
   }
   ul.mobile {
     display: none;
@@ -52,9 +56,9 @@ import SpeakerPickerItem from "./SpeakerPickerItem.astro";
     display: none;
   }
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 800px) {
     section {
-      padding: 125rem 0 105rem;
+      padding: var(--spacing-unit) 0 105rem;
     }
     h2 {
       margin-bottom: 50rem;

@@ -3,9 +3,11 @@ import "material-icons/iconfont/filled.css";
 ---
 <style>
   section {
+    margin: 0 auto;
     display: flex;
     box-sizing: border-box;
     padding: 100rem calc(var(--spacing-unit) * 2);
+    max-width: var(--max-width);
   }
   h2 {
     margin: 0 0 23rem;
@@ -93,6 +95,13 @@ import "material-icons/iconfont/filled.css";
   }
   button:disabled span:last-child {
     display: inline;
+  }
+
+  @media only screen and (min-width: 600px) and (max-width: 1024px) {
+    form {
+      margin-left: 30rem;
+      flex: 1 1 70%;
+    }
   }
 
   @media only screen and (max-width: 600px) {

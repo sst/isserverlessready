@@ -10,21 +10,11 @@ interface User {
   email: string;
 }
 
-function md5(str: string) {
-  return require("crypto")
-    .createHash("md5")
-    .update(str)
-    .digest("hex")
-    .toString();
-}
+export const handler = ApiHandler(async (event) => {
+  const { email: email_address, name: Name }: User = useJsonBody();
 
-function url(method: string, email: string) {
-  return method === "PUT" ? `${URL}/${md5(email.toLowerCase())}` : URL;
-}
-
-function request({ name: Name, email: email_address }: User, method: string) {
-  return fetch(url(method, email_address), {
-    method,
+  const response = await fetch(URL, {
+    method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       email_address,
@@ -33,28 +23,10 @@ function request({ name: Name, email: email_address }: User, method: string) {
       api_key: Config.EO_KEY,
     }),
   });
-}
-
-export const handler = ApiHandler(async (event) => {
-  const user: User = useJsonBody();
-
-  const response = await request(user, "POST");
-
-  /**
-  const create = await request(user, "POST");
-
-  // If the user already exists, update their name
-  if (create.status === 409) {
-    const update = await request(user, "PUT");
-    response = update;
-  } else {
-    response = create;
-  }
-  **/
 
   return {
-    statusCode: response.status === 409 ? 200 : response.status,
     body: await response.text(),
     headers: { "Content-Type": "application/json" },
+    statusCode: response.status === 409 ? 200 : response.status,
   };
 });

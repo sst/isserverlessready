@@ -3,6 +3,8 @@ import { SITE } from "../config";
 ---
 <style>
   footer {
+    margin: 0 auto;
+    max-width: var(--max-width);
     box-sizing: border-box;
     padding: var(--spacing-unit) calc(var(--spacing-unit) * 2);
     color: var(--theme-text-light);
@@ -22,7 +24,7 @@ import { SITE } from "../config";
     footer {
       display: block;
       text-align: center;
-      padding: 50rem calc(var(--spacing-unit) * 2) var(--spacing-unit);
+      padding: 50rem calc(var(--spacing-unit) / 2) var(--spacing-unit);
     }
     .info,
     .links {

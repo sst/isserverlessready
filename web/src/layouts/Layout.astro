@@ -13,6 +13,10 @@ import heroVideo from "../assets/hero-bg.mp4";
 import heroImage from "../assets/hero-bg.png";
 ---
 <style>
+	body {
+		scroll-snap-type: y mandatory;
+		scroll-behavior: smooth;
+	}
 	.hero-image,
 	.hero-video {
 		width: 100vw;
@@ -27,6 +31,15 @@ import heroImage from "../assets/hero-bg.png";
 	}
 	.hero-video {
 		display: none;
+	}
+	body > :global(section) {
+		scroll-snap-align: start;
+	}
+
+  @media only screen and (max-width: 600px) {
+		body {
+			scroll-snap-type: none;
+		}
 	}
 </style>
 <script>
@@ -43,13 +56,15 @@ import heroImage from "../assets/hero-bg.png";
 		<Head />
 		<slot name="title"><title>{SITE.title}</title></slot>
 		<meta name="description" content={SITE.description} />
+		<slot name="title"><title>{SITE.title}</title></slot>
+		<slot name="share"><meta property="og:image" content="/share.png"></slot>
 	</head>
 	<body>
 		<img class="hero-image" src={heroImage} />
 		<video class="hero-video" autoplay muted loop>
 			<source src={heroVideo} type="video/mp4" />
 		</video>
-    <slot />
+		<slot />
 		<Register />
 		<Footer />
 	</body>

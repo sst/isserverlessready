@@ -14,18 +14,14 @@ export function getStaticPaths() {
 }
 
 const { speaker } = Astro.props;
-const { logo, logoSmall, profile, nameImage, nameImageSmall } = speaker;
+const { logo, logoSmall, profile, nameImage, nameImageSmall, shareImagePath } = speaker;
 ---
 <style define:vars={{ speakerColor: speaker.color }}>
-  .hero {
+  section {
+    margin: 0 auto;
+    max-width: var(--max-width);
     box-sizing: border-box;
     padding-top: 20rem;
-    width: 100vw;
-    height: auto;
-    position: relative;
-    background-size: cover;
-    background-position: 50% 50%;
-    background-image: url('../../assets/hero-bg.png');
   }
   header {
     text-align: center;
@@ -59,7 +55,7 @@ const { logo, logoSmall, profile, nameImage, nameImageSmall } = speaker;
     font-size: 14rem;
     line-height: 14rem;
   }
-  section {
+  div.speaker {
     box-sizing: border-box;
     padding: var(--spacing-unit) calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 2);
     display: flex;
@@ -108,8 +104,12 @@ const { logo, logoSmall, profile, nameImage, nameImageSmall } = speaker;
     display: none;
   }
 
-  @media only screen and (max-width: 600px) {
-    section {
+  @media only screen and (max-width: 800px) {
+    h3 {
+      margin-bottom: 9rem;
+      line-height: 1.15;
+    }
+    div.speaker {
       text-align: center;
       padding: 43rem calc(var(--spacing-unit) / 2) 48rem;
       display: block;
@@ -162,12 +162,13 @@ const { logo, logoSmall, profile, nameImage, nameImageSmall } = speaker;
 </style>
 <Layout>
   <title slot="title">{speaker.name} / {SITE.title}</title>
-  <div class="hero">
+  <meta slot="share" property="og:image" content={shareImagePath}>
+  <section>
     <header>
       <a href="/" class="home"><h3>{SITE.title}</h3></a>
       <a href="/" class="main">Main</a><span class="separator">&bull;</span><h1>{speaker.name}</h1>
     </header>
-    <section>
+    <div class="speaker">
       <a class="logo-mobile" target="_blank" href={speaker.link}>
         <img src={logoSmall.src} width={logoSmall.width} height={logoSmall.height} alt={speaker.company} />
       </a>
@@ -191,6 +192,6 @@ const { logo, logoSmall, profile, nameImage, nameImageSmall } = speaker;
         <h2>&ldquo;{speaker.talkTitle}&rdquo;</h2>
         <p>{speaker.talkDescription}</p>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 </Layout>

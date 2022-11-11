@@ -6,7 +6,7 @@ import { SITE } from "../config";
 <style>
   .hero {
     box-sizing: border-box;
-    padding: 156rem var(--spacing-unit) 146rem;
+    padding: 156rem var(--spacing-unit) 240rem;
     text-align: center;
   }
   h6 {
@@ -15,15 +15,16 @@ import { SITE } from "../config";
     font-size: 24rem;
   }
   h1 {
-    margin: 0;
+    margin: 30rem 0 0;
     text-transform: uppercase;
     font-size: 80rem;
+    line-height: 1.15;
     text-shadow:
       -3px -2px 0 var(--theme-accent),
       1px 5px 0 hsla(267, 12%, 39%, 1);
   }
   p {
-    margin: 16rem auto 85rem;
+    margin: 42rem auto 85rem;
     max-width: 640px;
     font-size: 20rem;
     color: var(--theme-text-light);
@@ -45,7 +46,7 @@ import { SITE } from "../config";
   }
   @media only screen and (max-width: 600px) {
     .hero {
-      padding: 148rem calc(var(--spacing-unit) / 2) 136rem;
+      padding: 148rem calc(var(--spacing-unit) / 2) 231rem;
     }
     h1 {
       margin-top: 22rem;
@@ -74,12 +75,11 @@ import { SITE } from "../config";
     }
   }
 </style>
-
-<div class="hero">
+<section class="hero">
   <h6>December 6</h6>
   <h1>{SITE.title}</h1>
   <p>{SITE.description}</p>
   <a href="#register" class="button">
     <span>Register</span><span class="material-icons">play_arrow</span>
   </a>
-</div>
+</section>

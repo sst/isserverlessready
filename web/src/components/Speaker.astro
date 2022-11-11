@@ -69,6 +69,12 @@ const { link, title, color, twitter } = Astro.props;
     font-size: 32rem;
     vertical-align: -7px;
   }
+
+  @media only screen and (max-width: 1280px) {
+    .content a:first-child {
+      align-self: flex-end;
+    }
+  }
 </style>
 <div class="panel">
   <div class="image">

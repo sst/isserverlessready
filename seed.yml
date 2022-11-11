@@ -1,0 +1,2 @@
+before_deploy:
+  - npx sst secrets set EO_KEY $EO_KEY

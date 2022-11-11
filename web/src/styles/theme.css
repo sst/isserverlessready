@@ -30,6 +30,8 @@
 :root {
   color-scheme: only dark;
 
+  --max-width: 1440rem;
+
   --spacing-unit: 30rem;
 
   --line-height: 1.625;

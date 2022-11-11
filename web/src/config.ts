@@ -55,6 +55,7 @@ interface Speaker {
   profileSmall: Image;
   nameImage: Image;
   nameImageSmall: Image;
+  shareImagePath: string;
 }
 
 export const SITE: Site = {
@@ -83,6 +84,7 @@ export const SPEAKERS: Record<string, Speaker> = {
     profileSmall: { src: jarredSmall, width: "94", height: "94" },
     nameImage: { src: jarredName, width: "544", height: "67" },
     nameImageSmall: { src: jarredNameSmall, width: "350", height: "106" },
+    shareImagePath: "/jarred.png",
   },
   isamlambert: {
     name: "Sam Lambert",
@@ -102,6 +104,7 @@ export const SPEAKERS: Record<string, Speaker> = {
     profileSmall: { src: samSmall, width: "94", height: "94" },
     nameImage: { src: samName, width: "535", height: "68" },
     nameImageSmall: { src: samNameSmall, width: "226", height: "104" },
+    shareImagePath: "/enes.png",
   },
   enesakar: {
     name: "Enes Akar",
@@ -121,6 +124,7 @@ export const SPEAKERS: Record<string, Speaker> = {
     profileSmall: { src: enesSmall, width: "94", height: "94" },
     nameImage: { src: enesName, width: "535", height: "68" },
     nameImageSmall: { src: enesNameSmall, width: "226", height: "104" },
+    shareImagePath: "/enes.png",
   },
   fredschott: {
     name: "Fred K. Schott",
@@ -140,5 +144,6 @@ export const SPEAKERS: Record<string, Speaker> = {
     profileSmall: { src: fredSmall, width: "94", height: "94" },
     nameImage: { src: fredName, width: "535", height: "68" },
     nameImageSmall: { src: fredNameSmall, width: "226", height: "104" },
+    shareImagePath: "/enes.png",
   },
 };
