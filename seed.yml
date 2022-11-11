@@ -1,2 +1,4 @@
+before_compile:
+  - n 14.15.4
 before_deploy:
   - npx sst secrets set EO_KEY $EO_KEY
