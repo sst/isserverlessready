@@ -23,10 +23,10 @@ RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-DTSTAMP:20221114T230202Z
+DTSTAMP:20221114T231636Z
 UID:1668466710071-11319@ical.marudot.com
-DTSTART;TZID=America/Los_Angeles:20221206T120000
-DTEND;TZID=America/Los_Angeles:20221206T180000
+DTSTART;TZID=America/Los_Angeles:20221206T090000
+DTEND;TZID=America/Los_Angeles:20221206T150000
 SUMMARY:Conference: Is serverless ready?
 URL:https://www.youtube.com/c/sst-dev
 DESCRIPTION:A virtual showcase of the next generation of serverless tools and creators.
