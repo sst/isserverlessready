@@ -4,6 +4,7 @@ import "../styles/theme.css";
 import "../styles/index.css";
 
 import Head from "../components/Head.astro";
+import { AstroConfigSchema } from "astro/dist/core/config";
 ---
 <style>
   section {
@@ -31,7 +32,7 @@ import Head from "../components/Head.astro";
 	<body>
     <section>
       <h1>Page not found</h1>
-      <p><a href="/">Go back home</a></p>
+      <p><a href={new URL("/", Astro.url)}>Go back home</a></p>
     </section>
 	</body>
 </html>

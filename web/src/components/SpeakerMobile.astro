@@ -9,6 +9,7 @@ interface Props {
 }
 
 const { name, title, color, twitter } = Astro.props;
+const profileUrl = new URL(`./speakers/${twitter}.html`, Astro.url);
 ---
 <style define:vars={{ speakerColor: color }}>
   a {
@@ -60,7 +61,7 @@ const { name, title, color, twitter } = Astro.props;
     }
   }
 </style>
-<a href={`/speakers/${twitter}`}>
+<a href={profileUrl}>
   <slot name="image" />
   <div class="content">
     <slot name="logo" />

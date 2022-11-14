@@ -15,6 +15,7 @@ export function getStaticPaths() {
 
 const { speaker } = Astro.props;
 const { logo, logoSmall, profile, nameImage, nameImageSmall, shareImagePath } = speaker;
+const homeUrl = new URL("/", Astro.url);
 ---
 <style define:vars={{ speakerColor: speaker.color }}>
   section {
@@ -165,8 +166,8 @@ const { logo, logoSmall, profile, nameImage, nameImageSmall, shareImagePath } = 
   <meta slot="share" property="og:image" content={shareImagePath}>
   <section>
     <header>
-      <a href="/" class="home"><h3>{SITE.title}</h3></a>
-      <a href="/" class="main">Main</a><span class="separator">&bull;</span><h1>{speaker.name}</h1>
+      <a href={homeUrl} class="home"><h3>{SITE.title}</h3></a>
+      <a href={homeUrl} class="main">Main</a><span class="separator">&bull;</span><h1>{speaker.name}</h1>
     </header>
     <div class="speaker">
       <a class="logo-mobile" target="_blank" href={speaker.link}>

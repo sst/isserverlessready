@@ -19,6 +19,7 @@ function MyStack({ stack }: StackContext) {
 
   const site = new ViteStaticSite(stack, "site", {
     path: "web",
+    errorPage: "404.html",
     buildCommand: "yarn run build",
     environment: {
       PUBLIC_API_URL: api.url,

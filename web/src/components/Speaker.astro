@@ -10,6 +10,7 @@ interface Props {
 }
 
 const { link, title, color, twitter } = Astro.props;
+const profileUrl = new URL(`./speakers/${twitter}.html`, Astro.url);
 ---
 <style define:vars={{ speakerColor: color }}>
   .panel {
@@ -85,14 +86,14 @@ const { link, title, color, twitter } = Astro.props;
       <slot name="logo" />
     </a>
     <div class="profile">
-      <a href={`/speakers/${twitter}`}><slot name="name" /></a>
+      <a href={profileUrl}><slot name="name" /></a>
       <h4>
         <span>{title}</span>
         <a target="_blank" href={`https://twitter.com/${twitter}`}>
           <TwitterIcon />
         </a>
       </h4>
-      <a href={`/speakers/${twitter}`} class="button">
+      <a href={profileUrl} class="button">
         <span>Learn more</span><span class="material-icons">play_arrow</span>
       </a>
     </div>
