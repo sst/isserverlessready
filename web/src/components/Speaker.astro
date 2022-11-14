@@ -10,7 +10,7 @@ interface Props {
 }
 
 const { link, title, color, twitter } = Astro.props;
-const profileUrl = new URL(`./speakers/${twitter}.html`, Astro.url);
+const profileUrl = `/speakers/${twitter}.html`;
 ---
 <style define:vars={{ speakerColor: color }}>
   .panel {
