@@ -61,7 +61,7 @@ import heroImage from "../assets/hero-bg.png";
 	</head>
 	<body>
 		<img class="hero-image" src={heroImage} />
-		<video class="hero-video" autoplay muted loop>
+		<video class="hero-video" playsinline autoplay muted loop>
 			<source src={heroVideo} type="video/mp4" />
 		</video>
 		<slot />
