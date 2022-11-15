@@ -26,7 +26,7 @@ export const handler = ApiHandler(async (event) => {
 
   return {
     body: await response.text(),
+    statusCode: response.status,
     headers: { "Content-Type": "application/json" },
-    statusCode: response.status === 409 ? 200 : response.status,
   };
 });

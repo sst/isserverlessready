@@ -97,6 +97,24 @@ import "material-icons/iconfont/filled.css";
     display: inline;
   }
 
+  .success {
+    margin: 0;
+    padding: 10rem 15rem;
+    border-radius: 2px;
+    color: var(--theme-accent);
+    border: 1px solid var(--theme-accent);
+    display: flex;
+    align-items: center;
+    animation: fade-effect 1s;
+  }
+  .success span:first-child {
+    margin-right: 12rem;
+  }
+  .success span:last-child {
+    line-height: 1.5;
+    font-size: 16rem;
+  }
+
   @media only screen and (min-width: 600px) and (max-width: 1024px) {
     form {
       margin-left: 30rem;
@@ -151,8 +169,22 @@ import "material-icons/iconfont/filled.css";
       background-color: var(--button-animate-bg);
     }
   }
+  @keyframes fade-effect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
 </style>
 <script>
+  function onSuccess(button: HTMLButtonElement, message: string) {
+    const p = document.querySelector("form > p.success") as HTMLParagraphElement;
+    const text = p.querySelector("span:last-child") as HTMLSpanElement;
+
+    text.innerText = message;
+
+    button.style.display = "none";
+    p.style.display = "flex";
+  }
+
 	document.addEventListener("DOMContentLoaded", () => {
     console.log(import.meta.env.PUBLIC_API_URL);
     const button = document.querySelector("form > button") as HTMLButtonElement;
@@ -184,11 +216,14 @@ import "material-icons/iconfont/filled.css";
 
       button.classList.remove("loading");
 
-      if (response.status !== 200) {
-        button.classList.add("shake");
+      if (response.status === 200) {
+        onSuccess(button, "Check your inbox for an invite from thanks@sst.dev!");
+      }
+      else if (response.status === 409) {
+        onSuccess(button, "You are on the list. Search for thanks@sst.dev in your inbox!");
       }
       else {
-        button.disabled = true;
+        button.classList.add("shake");
       }
     });
   });
@@ -205,5 +240,9 @@ import "material-icons/iconfont/filled.css";
       <span>Register</span><span class="material-icons">play_arrow</span>
       <span class="material-icons check">check</span>
     </button>
+    <p class="success" style="display: none;">
+      <span class="material-icons">thumb_up_alt</span>
+      <span></span>
+    </p>
   </form>
 </section>
