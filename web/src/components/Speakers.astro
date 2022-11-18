@@ -34,9 +34,15 @@ import SpeakerPickerItem from "./SpeakerPickerItem.astro";
     opacity: 0.5;
     cursor: pointer;
   }
+  .tab-button :global(img) {
+    filter: grayscale(1);
+  }
   .tab-button.active {
     opacity: 1;
     cursor: default;
+  }
+  .tab-button.active :global(img) {
+    filter: none;
   }
   .speaker {
     margin-left: var(--spacing-unit);

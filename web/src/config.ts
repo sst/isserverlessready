@@ -1,30 +1,44 @@
-import bun from "./assets/companies/bun.png";
-import bunMono from "./assets/companies/bun-mono.png";
-import jarred from "./assets/speakers/jarred.png";
-import jarredSmall from "./assets/speakers/jarred-small.png";
-import jarredName from "./assets/speakers/jarred-name.png";
-import jarredNameSmall from "./assets/speakers/jarred-name-small.png";
-
-import planetscale from "./assets/companies/planetscale.png";
-import planetscaleMono from "./assets/companies/planetscale-mono.png";
-import sam from "./assets/speakers/fred.png";
-import samSmall from "./assets/speakers/fred-small.png";
-import samName from "./assets/speakers/fred-name.png";
-import samNameSmall from "./assets/speakers/fred-name-small.png";
-
-import upstash from "./assets/companies/planetscale.png";
-import upstashMono from "./assets/companies/upstash-mono.png";
-import enes from "./assets/speakers/fred.png";
-import enesSmall from "./assets/speakers/fred-small.png";
-import enesName from "./assets/speakers/fred-name.png";
-import enesNameSmall from "./assets/speakers/fred-name-small.png";
-
-import astro from "./assets/companies/planetscale.png";
-import astroMono from "./assets/companies/upstash-mono.png";
+import astro from "./assets/companies/astro.svg";
+import astroMono from "./assets/companies/astro.svg";
 import fred from "./assets/speakers/fred.png";
 import fredSmall from "./assets/speakers/fred-small.png";
-import fredName from "./assets/speakers/fred-name.png";
-import fredNameSmall from "./assets/speakers/fred-name-small.png";
+import fredName from "./assets/speakers/fred-name.svg";
+import fredNameSmall from "./assets/speakers/fred-name-small.svg";
+
+import upstash from "./assets/companies/upstash.svg";
+import upstashMono from "./assets/companies/upstash.svg";
+import enes from "./assets/speakers/enes.png";
+import enesSmall from "./assets/speakers/enes-small.png";
+import enesName from "./assets/speakers/enes-name.svg";
+import enesNameSmall from "./assets/speakers/enes-name-small.svg";
+
+import solid from "./assets/companies/solid.svg";
+import solidMono from "./assets/companies/solid.svg";
+import ryan from "./assets/speakers/ryan.png";
+import ryanSmall from "./assets/speakers/ryan-small.png";
+import ryanName from "./assets/speakers/ryan-name.svg";
+import ryanNameSmall from "./assets/speakers/ryan-name-small.svg";
+
+import mongo from "./assets/companies/mongo.svg";
+import mongoMono from "./assets/companies/mongo.svg";
+import kevin from "./assets/speakers/kevin.png";
+import kevinSmall from "./assets/speakers/kevin-small.png";
+import kevinName from "./assets/speakers/kevin-name.svg";
+import kevinNameSmall from "./assets/speakers/kevin-name-small.svg";
+
+import sst from "./assets/companies/sst.svg";
+import sstMono from "./assets/companies/sst.svg";
+import dax from "./assets/speakers/dax.png";
+import daxSmall from "./assets/speakers/dax-small.png";
+import daxName from "./assets/speakers/dax-name.svg";
+import daxNameSmall from "./assets/speakers/dax-name-small.svg";
+
+import neon from "./assets/companies/neon.svg";
+import neonMono from "./assets/companies/neon.svg";
+import raouf from "./assets/speakers/raouf.png";
+import raoufSmall from "./assets/speakers/raouf-small.png";
+import raoufName from "./assets/speakers/raouf-name.svg";
+import raoufNameSmall from "./assets/speakers/raouf-name-small.svg";
 
 interface Site {
   title: string;
@@ -66,84 +80,124 @@ export const SITE: Site = {
 };
 
 export const SPEAKERS: Record<string, Speaker> = {
-  jarredsumner: {
-    name: "Jarred Sumner",
-    twitter: "jarredsumner",
-    link: "https://bun.sh",
-    title: "CEO at Bun",
-    company: "Bun",
-    color: "hsla(39, 95%, 77%, 1)",
-    talkTitle: "The Future of Node",
-    talkDescription:
-      "In this talk we'll look at how Bun is making Node a lot better for building serverless applications.",
-    logo: { src: bun, width: "312", height: "125" },
-    logoSmall: { src: bun, width: "215", height: "85" },
-    logoMono: { src: bunMono, width: "145", height: "57" },
-    logoMonoSmall: { src: bunMono, width: "108", height: "43" },
-    profile: { src: jarred, width: "524", height: "554" },
-    profileSmall: { src: jarredSmall, width: "94", height: "94" },
-    nameImage: { src: jarredName, width: "544", height: "67" },
-    nameImageSmall: { src: jarredNameSmall, width: "350", height: "106" },
-    shareImagePath: "/jarred.png",
-  },
-  isamlambert: {
-    name: "Sam Lambert",
-    twitter: "isamlambert",
-    link: "https://planetscale.com",
-    title: "CEO at PlanetScale",
-    company: "PlanetScale",
-    color: "hsla(34, 90%, 51%, 1)",
-    talkTitle: "The Future of SQL",
-    talkDescription:
-      "In this talk we'll look at how PlanetScale is making SQL a lot better for building serverless applications.",
-    logo: { src: planetscale, width: "324", height: "81" },
-    logoSmall: { src: planetscale, width: "246", height: "61" },
-    logoMono: { src: planetscaleMono, width: "169", height: "27" },
-    logoMonoSmall: { src: planetscaleMono, width: "169", height: "27" },
-    profile: { src: sam, width: "616", height: "575" },
-    profileSmall: { src: samSmall, width: "94", height: "94" },
-    nameImage: { src: samName, width: "535", height: "68" },
-    nameImageSmall: { src: samNameSmall, width: "226", height: "104" },
-    shareImagePath: "/enes.png",
-  },
-  enesakar: {
-    name: "Enes Akar",
-    twitter: "enesakar",
-    link: "https://upstash.com",
-    title: "CTO at Upstash",
-    company: "Upstash",
-    color: "hsla(34, 90%, 51%, 1)",
-    talkTitle: "The Future of Redis",
-    talkDescription:
-      "In this talk we'll look at how Upstash is making Redis a lot better for building serverless applications.",
-    logo: { src: upstash, width: "324", height: "81" },
-    logoSmall: { src: upstash, width: "235", height: "68" },
-    logoMono: { src: upstashMono, width: "143", height: "41" },
-    logoMonoSmall: { src: upstashMono, width: "110", height: "32" },
-    profile: { src: enes, width: "616", height: "575" },
-    profileSmall: { src: enesSmall, width: "94", height: "94" },
-    nameImage: { src: enesName, width: "535", height: "68" },
-    nameImageSmall: { src: enesNameSmall, width: "226", height: "104" },
-    shareImagePath: "/enes.png",
-  },
   fredschott: {
     name: "Fred K. Schott",
     twitter: "fredschott",
     link: "https://astro.build",
     title: "CEO at Astro",
     company: "Astro",
-    color: "hsla(34, 90%, 51%, 1)",
+    color: "hsla(22, 100%, 50%, 1)",
     talkTitle: "The Future of SPAs",
     talkDescription:
       "In this talk we'll look at how Astro is making SPAs a lot better for building serverless applications.",
-    logo: { src: astro, width: "324", height: "81" },
+    logo: { src: astro, width: "243", height: "80" },
     logoSmall: { src: astro, width: "235", height: "68" },
-    logoMono: { src: astroMono, width: "143", height: "41" },
+    logoMono: { src: astroMono, width: "144", height: "47" },
     logoMonoSmall: { src: astroMono, width: "110", height: "32" },
     profile: { src: fred, width: "616", height: "575" },
     profileSmall: { src: fredSmall, width: "94", height: "94" },
     nameImage: { src: fredName, width: "535", height: "68" },
     nameImageSmall: { src: fredNameSmall, width: "226", height: "104" },
+    shareImagePath: "/fred.png",
+  },
+  enesakar: {
+    name: "Enes Akar",
+    twitter: "enesakar",
+    link: "https://upstash.com",
+    title: "CEO at Upstash",
+    company: "Upstash",
+    color: "hsla(162, 100%, 46%, 1)",
+    talkTitle: "The Future of Redis",
+    talkDescription:
+      "In this talk we'll look at how Upstash is making Redis a lot better for building serverless applications.",
+    logo: { src: upstash, width: "297", height: "86" },
+    logoSmall: { src: upstash, width: "235", height: "68" },
+    logoMono: { src: upstashMono, width: "152", height: "44" },
+    logoMonoSmall: { src: upstashMono, width: "110", height: "32" },
+    profile: { src: enes, width: "526", height: "526" },
+    profileSmall: { src: enesSmall, width: "94", height: "94" },
+    nameImage: { src: enesName, width: "534", height: "68" },
+    nameImageSmall: { src: enesNameSmall, width: "226", height: "104" },
     shareImagePath: "/enes.png",
+  },
+  RyanCarniato: {
+    name: "Ryan Carniato",
+    twitter: "RyanCarniato",
+    link: "https://www.solidjs.com",
+    title: "Creator of SolidJS",
+    company: "SolidJS",
+    color: "hsla(211, 43%, 51%, 1)",
+    talkTitle: "The Future of Redis",
+    talkDescription:
+      "In this talk we'll look at how Upstash is making Redis a lot better for building serverless applications.",
+    logo: { src: solid, width: "382", height: "71" },
+    logoSmall: { src: solid, width: "235", height: "68" },
+    logoMono: { src: solidMono, width: "164", height: "30" },
+    logoMonoSmall: { src: solidMono, width: "110", height: "32" },
+    profile: { src: ryan, width: "536", height: "506" },
+    profileSmall: { src: ryanSmall, width: "94", height: "94" },
+    nameImage: { src: ryanName, width: "535", height: "68" },
+    nameImageSmall: { src: ryanNameSmall, width: "226", height: "104" },
+    shareImagePath: "/ryan.png",
+  },
+  kjerniga: {
+    name: "Kevin Jernigan",
+    twitter: "kjerniga",
+    link: "https://www.mongodb.com",
+    title: "Principal Product Manager at MongoDB",
+    company: "MongoDB",
+    color: "hsla(79, 100%, 51%, 1)",
+    talkTitle: "The Future of Redis",
+    talkDescription:
+      "In this talk we'll look at how Upstash is making Redis a lot better for building serverless applications.",
+    logo: { src: mongo, width: "363", height: "91" },
+    logoSmall: { src: mongo, width: "235", height: "68" },
+    logoMono: { src: mongoMono, width: "156", height: "39" },
+    logoMonoSmall: { src: mongoMono, width: "110", height: "32" },
+    profile: { src: kevin, width: "532", height: "532" },
+    profileSmall: { src: kevinSmall, width: "94", height: "94" },
+    nameImage: { src: kevinName, width: "576", height: "68" },
+    nameImageSmall: { src: kevinNameSmall, width: "226", height: "104" },
+    shareImagePath: "/kevin.png",
+  },
+  thdxr: {
+    name: "Dax Raad",
+    twitter: "thdxr",
+    link: "https://sst.dev",
+    title: "Core Team at SST",
+    company: "SST",
+    color: "hsla(39, 95%, 77%, 1)",
+    talkTitle: "The Future of Redis",
+    talkDescription:
+      "In this talk we'll look at how Upstash is making Redis a lot better for building serverless applications.",
+    logo: { src: sst, width: "281", height: "81" },
+    logoSmall: { src: sst, width: "235", height: "68" },
+    logoMono: { src: sstMono, width: "114", height: "33" },
+    logoMonoSmall: { src: sstMono, width: "110", height: "32" },
+    profile: { src: dax, width: "524", height: "554" },
+    profileSmall: { src: daxSmall, width: "94", height: "94" },
+    nameImage: { src: daxName, width: "330", height: "68" },
+    nameImageSmall: { src: daxNameSmall, width: "226", height: "104" },
+    shareImagePath: "/dax.png",
+  },
+  raoufdevrel: {
+    name: "Raouf Chebri",
+    twitter: "raoufdevrel",
+    link: "https://neon.tech",
+    title: "Developer Advocate at Neon",
+    company: "Neon",
+    color: "hsla(64, 95%, 60%, 1)",
+    talkTitle: "The Future of Redis",
+    talkDescription:
+      "In this talk we'll look at how Upstash is making Redis a lot better for building serverless applications.",
+    logo: { src: neon, width: "293", height: "82" },
+    logoSmall: { src: neon, width: "235", height: "68" },
+    logoMono: { src: neonMono, width: "126", height: "35" },
+    logoMonoSmall: { src: neonMono, width: "110", height: "32" },
+    profile: { src: raouf, width: "881", height: "616" },
+    profileSmall: { src: raoufSmall, width: "94", height: "94" },
+    nameImage: { src: raoufName, width: "494", height: "68" },
+    nameImageSmall: { src: raoufNameSmall, width: "226", height: "104" },
+    shareImagePath: "/raouf.png",
   },
 };
