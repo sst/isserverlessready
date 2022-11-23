@@ -37,8 +37,14 @@ import heroImage from "../assets/hero-bg.png";
 	document.addEventListener("DOMContentLoaded", () => {
 		const video = document.querySelector("body > video") as HTMLVideoElement;
 
-		video && video.addEventListener("canplay", event => {
+		// Only show the video once it's been loaded
+		// Prevents flashing and resizing on load
+		video && video.addEventListener("canplaythrough", event => {
+			console.log("here");
 			video.style.display = "block";
+		});
+		video && video.addEventListener("error", event => {
+			alert("error");
 		});
 	});
 </script>
