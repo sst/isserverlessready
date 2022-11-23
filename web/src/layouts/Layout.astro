@@ -42,9 +42,15 @@ import heroImage from "../assets/hero-bg.png";
 		video && video.addEventListener("canplaythrough", event => {
 			console.log("here");
 			video.style.display = "block";
+			try {
+				video.play();
+			}
+			catch(e) {
+				console.log("error");
+			}
 		});
 		video && video.addEventListener("error", event => {
-			alert("error");
+			alert("onerror");
 		});
 	});
 </script>
@@ -58,7 +64,7 @@ import heroImage from "../assets/hero-bg.png";
 	</head>
 	<body>
 		<img class="hero-image" src={heroImage} />
-		<video class="hero-video" playsinline autoplay muted loop>
+		<video class="hero-video" playsinline muted loop>
 			<source src={heroVideo} type="video/mp4" />
 		</video>
 		<slot />
