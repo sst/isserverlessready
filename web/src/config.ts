@@ -118,7 +118,7 @@ export const SPEAKERS: Record<string, Speaker> = {
     talkTitle:
       "The most flexible data platform for building serverless applications",
     talkDescription:
-      "MongoDB Atlas: the most flexible data platform for building serverless applications. Enjoy the flexibility of MongoDB with the added benefit of instant, elastic scaling and an operations-based pricing model that only charges for what you use. Join Kevin Jernigan, Principal Product Manager at MongoDB and Suraj Shetty, Senior Solutions Architect to learn more.",
+      "Enjoy the flexibility of MongoDB with the added benefit of instant, elastic scaling and an operations-based pricing model that only charges for what you use. Join Kevin Jernigan, Principal Product Manager at MongoDB and Suraj Shetty, Senior Solutions Architect to learn more.",
     logo: { src: mongo, width: "363", height: "91" },
     logoSmall: { src: mongo, width: "235", height: "68" },
     logoMono: { src: mongoMono, width: "156", height: "39" },
@@ -181,7 +181,7 @@ export const SPEAKERS: Record<string, Speaker> = {
     color: "hsla(39, 95%, 77%, 1)",
     talkTitle: "How SST makes serverless ready",
     talkDescription:
-      "In this demo we'll take a quick tour of everything that's new in SST v2. And how it makes serverless ready!",
+      "Let's take a tour of everything that's new in SST v2. And how it makes serverless finally ready!",
     logo: { src: sst, width: "281", height: "81" },
     logoSmall: { src: sst, width: "235", height: "68" },
     logoMono: { src: sstMono, width: "114", height: "33" },

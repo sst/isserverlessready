@@ -37,10 +37,13 @@ import heroImage from "../assets/hero-bg.png";
 	document.addEventListener("DOMContentLoaded", () => {
 		const video = document.querySelector("body > video") as HTMLVideoElement;
 
-		video && video.addEventListener("playing", event => {
+		// Show once the video starts playing to avoid
+		// flashing video of the wrong size
+		video.addEventListener("playing", event => {
 			video.style.display = "block";
 		});
 
+		// Handle cannot play errors
 		video
 			.play()
 			.catch((err) => {
