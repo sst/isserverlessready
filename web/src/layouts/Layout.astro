@@ -39,7 +39,7 @@ import heroImage from "../assets/hero-bg.png";
 
 		// Only show the video once it's been loaded
 		// Prevents flashing and resizing on load
-		video && video.addEventListener("canplaythrough", event => {
+		video && video.addEventListener("canplay", event => {
 			console.log("here");
 			video.style.display = "block";
 			try {
