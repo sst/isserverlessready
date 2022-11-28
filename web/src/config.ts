@@ -200,7 +200,7 @@ export const SPEAKERS: Record<string, Speaker> = {
     title: "Developer Advocate at Neon",
     company: "Neon",
     color: "hsla(64, 95%, 60%, 1)",
-    talkTitle: "How to build better with serverless Postgres",
+    talkTitle: "Is Serverless Postgres Ready?",
     talkDescription:
       "In this presentation, we’ll see how decoupling Postgres’ storage and compute means for developers.",
     logo: { src: neon, width: "293", height: "82" },
