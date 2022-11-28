@@ -23,17 +23,17 @@ RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-DTSTAMP:20221114T231636Z
+DTSTAMP:20221128T215616Z
 UID:1668466710071-11319@ical.marudot.com
 DTSTART;TZID=America/Los_Angeles:20221206T090000
 DTEND;TZID=America/Los_Angeles:20221206T150000
-SUMMARY:Conference: Is serverless ready?
-URL:https://www.youtube.com/c/sst-dev
+SUMMARY:LIVE: Is serverless ready?
+URL:https://www.youtube.com/watch?v=qEKUNZWbj-8
 DESCRIPTION:A virtual showcase of the next generation of serverless tools and creators.
-LOCATION:https://www.youtube.com/c/sst-dev
+LOCATION:https://www.youtube.com/watch?v=qEKUNZWbj-8
 BEGIN:VALARM
 ACTION:DISPLAY
-DESCRIPTION:Conference: Is serverless ready?
+DESCRIPTION:LIVE: Is serverless ready?
 TRIGGER:-PT15M
 END:VALARM
 END:VEVENT
