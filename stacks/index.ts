@@ -24,7 +24,7 @@ function MyStack({ stack, app }: StackContext) {
     customDomain:
       app.stage === "prod"
         ? {
-            hostedZone: "iserverlessready.com",
+            hostedZone: "isserverlessready.com",
             domainName: "preview.isserverlessready.com",
           }
         : undefined,
