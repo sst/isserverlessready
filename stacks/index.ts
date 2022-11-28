@@ -6,7 +6,7 @@ import {
   ViteStaticSite,
 } from "@serverless-stack/resources";
 
-function MyStack({ stack }: StackContext) {
+function MyStack({ stack, app }: StackContext) {
   const EO_KEY = new Config.Secret(stack, "EO_KEY");
 
   const api = new Api(stack, "api", {
@@ -21,6 +21,8 @@ function MyStack({ stack }: StackContext) {
     path: "web",
     errorPage: "404.html",
     buildCommand: "yarn run build",
+    customDomain:
+      app.stage === "prod" ? "preview.isserverlessready.com" : undefined,
     environment: {
       PUBLIC_API_URL: api.url,
     },
