@@ -6,6 +6,14 @@ import fredSmall from "./assets/speakers/fred-small.png";
 import fredName from "./assets/speakers/fred-name.svg";
 import fredNameSmall from "./assets/speakers/fred-name-small.svg";
 
+import bun from "./assets/companies/bun.png";
+import bunMono from "./assets/companies/bun.png";
+import jarred from "./assets/speakers/jarred.png";
+import jarredMobile from "./assets/speakers/jarred.png";
+import jarredSmall from "./assets/speakers/jarred-small.png";
+import jarredName from "./assets/speakers/jarred-name.svg";
+import jarredNameSmall from "./assets/speakers/jarred-name-small.svg";
+
 import planetscale from "./assets/companies/planetscale.png";
 import planetscaleMono from "./assets/companies/planetscale.png";
 import aaron from "./assets/speakers/aaron.png";
@@ -124,6 +132,27 @@ export const SPEAKERS: Record<string, Speaker> = {
     nameImageSmall: { src: fredNameSmall, width: "226", height: "104" },
     shareImagePath: "/fred.png",
   },
+  jarredsumner: {
+    name: "Jarred Sumner",
+    twitter: "jarredsumner",
+    link: "https://bun.sh",
+    title: "Creator of Bun",
+    company: "Bun",
+    color: "hsla(39, 95%, 77%, 1)",
+    talkTitle: "A new serverless runtime",
+    talkDescription:
+      "Bun is a fast all-in-one JavaScript serverless runtime. Bundle, transpile, install and run JavaScript & TypeScript projects — all in Bun.",
+    logo: { src: bun, width: "315", height: "124" },
+    logoSmall: { src: bun, width: "215", height: "85" },
+    logoMono: { src: bunMono, width: "145", height: "57" },
+    logoMonoSmall: { src: bunMono, width: "108", height: "43" },
+    profile: { src: jarred, width: "524", height: "554" },
+    profileSmall: { src: jarredSmall, width: "94", height: "94" },
+    profileMobile: { src: jarredMobile, width: "343", height: "362" },
+    nameImage: { src: jarredName, width: "554", height: "67" },
+    nameImageSmall: { src: jarredNameSmall, width: "206", height: "106" },
+    shareImagePath: "/jarred.png",
+  },
   RyanCarniato: {
     name: "Ryan Carniato",
     twitter: "RyanCarniato",
@@ -159,9 +188,9 @@ export const SPEAKERS: Record<string, Speaker> = {
     logoSmall: { src: sst, width: "235", height: "68" },
     logoMono: { src: sstMono, width: "114", height: "33" },
     logoMonoSmall: { src: sstMono, width: "110", height: "32" },
-    profile: { src: dax, width: "524", height: "554" },
-    profileSmall: { src: daxSmall, width: "94", height: "94" },
-    profileMobile: { src: daxMobile, width: "317", height: "350" },
+    profile: { src: dax, width: "508", height: "538" },
+    profileSmall: { src: daxSmall, width: "93", height: "94" },
+    profileMobile: { src: daxMobile, width: "338", height: "358" },
     nameImage: { src: daxName, width: "330", height: "68" },
     nameImageSmall: { src: daxNameSmall, width: "226", height: "104" },
     shareImagePath: "/dax.png",
@@ -178,7 +207,7 @@ export const SPEAKERS: Record<string, Speaker> = {
       "We look at how our connection pooling, scaling, read regions, and serverless driver makes PlanetScale a database built for serverless.",
     logo: { src: planetscale, width: "324", height: "52" },
     logoSmall: { src: planetscale, width: "242", height: "39" },
-    logoMono: { src: planetscale, width: "155", height: "25" },
+    logoMono: { src: planetscaleMono, width: "155", height: "25" },
     logoMonoSmall: { src: planetscale, width: "124", height: "20" },
     profile: { src: aaron, width: "616", height: "575" },
     profileSmall: { src: aaronSmall, width: "93", height: "94" },
