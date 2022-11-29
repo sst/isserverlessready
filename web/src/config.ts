@@ -136,7 +136,7 @@ export const SPEAKERS: Record<string, Speaker> = {
     name: "Jarred Sumner",
     twitter: "jarredsumner",
     link: "https://bun.sh",
-    title: "Creator of Bun",
+    title: "CEO at Bun",
     company: "Bun",
     color: "hsla(39, 95%, 77%, 1)",
     talkTitle: "A new serverless runtime",
