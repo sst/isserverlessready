@@ -6,13 +6,13 @@ import fredSmall from "./assets/speakers/fred-small.png";
 import fredName from "./assets/speakers/fred-name.svg";
 import fredNameSmall from "./assets/speakers/fred-name-small.svg";
 
-import upstash from "./assets/companies/upstash.svg";
-import upstashMono from "./assets/companies/upstash.svg";
-import enes from "./assets/speakers/enes.png";
-import enesMobile from "./assets/speakers/enes-mobile.png";
-import enesSmall from "./assets/speakers/enes-small.png";
-import enesName from "./assets/speakers/enes-name.svg";
-import enesNameSmall from "./assets/speakers/enes-name-small.svg";
+import planetscale from "./assets/companies/planetscale.png";
+import planetscaleMono from "./assets/companies/planetscale.png";
+import aaron from "./assets/speakers/aaron.png";
+import aaronMobile from "./assets/speakers/aaron.png";
+import aaronSmall from "./assets/speakers/aaron-small.png";
+import aaronName from "./assets/speakers/aaron-name.svg";
+import aaronNameSmall from "./assets/speakers/aaron-name-small.svg";
 
 import solid from "./assets/companies/solid.svg";
 import solidMono from "./assets/companies/solid.svg";
@@ -37,6 +37,22 @@ import daxMobile from "./assets/speakers/dax-mobile.png";
 import daxSmall from "./assets/speakers/dax-small.png";
 import daxName from "./assets/speakers/dax-name.svg";
 import daxNameSmall from "./assets/speakers/dax-name-small.svg";
+
+import upstash from "./assets/companies/upstash.svg";
+import upstashMono from "./assets/companies/upstash.svg";
+import enes from "./assets/speakers/enes.png";
+import enesMobile from "./assets/speakers/enes-mobile.png";
+import enesSmall from "./assets/speakers/enes-small.png";
+import enesName from "./assets/speakers/enes-name.svg";
+import enesNameSmall from "./assets/speakers/enes-name-small.svg";
+
+import adamdev from "./assets/companies/adam.svg";
+import adamdevMono from "./assets/companies/adam-mono.svg";
+import adam from "./assets/speakers/adam.png";
+import adamMobile from "./assets/speakers/adam-mobile.png";
+import adamSmall from "./assets/speakers/adam-small.png";
+import adamName from "./assets/speakers/adam-name.svg";
+import adamNameSmall from "./assets/speakers/adam-name-small.svg";
 
 import neon from "./assets/companies/neon.svg";
 import neonMono from "./assets/companies/neon.svg";
@@ -108,28 +124,6 @@ export const SPEAKERS: Record<string, Speaker> = {
     nameImageSmall: { src: fredNameSmall, width: "226", height: "104" },
     shareImagePath: "/fred.png",
   },
-  kjerniga: {
-    name: "Kevin Jernigan",
-    twitter: "kjerniga",
-    link: "https://www.mongodb.com",
-    title: "Principal Product Manager at MongoDB",
-    company: "MongoDB",
-    color: "hsla(79, 100%, 51%, 1)",
-    talkTitle:
-      "The most flexible data platform for building serverless applications",
-    talkDescription:
-      "Enjoy the flexibility of MongoDB with the added benefit of instant, elastic scaling and an operations-based pricing model that only charges for what you use. Join Kevin Jernigan, Principal Product Manager at MongoDB and Suraj Shetty, Senior Solutions Architect to learn more.",
-    logo: { src: mongo, width: "363", height: "91" },
-    logoSmall: { src: mongo, width: "235", height: "68" },
-    logoMono: { src: mongoMono, width: "156", height: "39" },
-    logoMonoSmall: { src: mongoMono, width: "110", height: "32" },
-    profile: { src: kevin, width: "532", height: "532" },
-    profileSmall: { src: kevinSmall, width: "94", height: "94" },
-    profileMobile: { src: kevinMobile, width: "532", height: "532" },
-    nameImage: { src: kevinName, width: "576", height: "68" },
-    nameImageSmall: { src: kevinNameSmall, width: "226", height: "104" },
-    shareImagePath: "/kevin.png",
-  },
   RyanCarniato: {
     name: "Ryan Carniato",
     twitter: "RyanCarniato",
@@ -150,6 +144,48 @@ export const SPEAKERS: Record<string, Speaker> = {
     nameImage: { src: ryanName, width: "535", height: "68" },
     nameImageSmall: { src: ryanNameSmall, width: "226", height: "104" },
     shareImagePath: "/ryan.png",
+  },
+  thdxr: {
+    name: "Dax Raad",
+    twitter: "thdxr",
+    link: "https://sst.dev",
+    title: "Core Team at SST",
+    company: "SST",
+    color: "hsla(39, 95%, 77%, 1)",
+    talkTitle: "How SST makes serverless ready",
+    talkDescription:
+      "Let's take a tour of everything that's new in SST v2. And how it makes serverless finally ready!",
+    logo: { src: sst, width: "281", height: "81" },
+    logoSmall: { src: sst, width: "235", height: "68" },
+    logoMono: { src: sstMono, width: "114", height: "33" },
+    logoMonoSmall: { src: sstMono, width: "110", height: "32" },
+    profile: { src: dax, width: "524", height: "554" },
+    profileSmall: { src: daxSmall, width: "94", height: "94" },
+    profileMobile: { src: daxMobile, width: "317", height: "350" },
+    nameImage: { src: daxName, width: "330", height: "68" },
+    nameImageSmall: { src: daxNameSmall, width: "226", height: "104" },
+    shareImagePath: "/dax.png",
+  },
+  aarondfrancis: {
+    name: "Aaron Francis",
+    twitter: "aarondfrancis",
+    link: "https://planetscale.com",
+    title: "Educator at PlanetScale",
+    company: "PlanetScale",
+    color: "hsla(34, 90%, 51%, 1)",
+    talkTitle: "A database built for serverless",
+    talkDescription:
+      "We look at how our connection pooling, scaling, read regions, and serverless driver makes PlanetScale a database built for serverless.",
+    logo: { src: planetscale, width: "324", height: "52" },
+    logoSmall: { src: planetscale, width: "242", height: "39" },
+    logoMono: { src: planetscale, width: "155", height: "25" },
+    logoMonoSmall: { src: planetscale, width: "124", height: "20" },
+    profile: { src: aaron, width: "616", height: "575" },
+    profileSmall: { src: aaronSmall, width: "93", height: "94" },
+    profileMobile: { src: aaronMobile, width: "375", height: "441" },
+    nameImage: { src: aaronName, width: "535", height: "68" },
+    nameImageSmall: { src: aaronNameSmall, width: "298", height: "104" },
+    shareImagePath: "/aaron.png",
   },
   enesakar: {
     name: "Enes Akar",
@@ -172,26 +208,48 @@ export const SPEAKERS: Record<string, Speaker> = {
     nameImageSmall: { src: enesNameSmall, width: "226", height: "104" },
     shareImagePath: "/enes.png",
   },
-  thdxr: {
-    name: "Dax Raad",
-    twitter: "thdxr",
-    link: "https://sst.dev",
-    title: "Core Team at SST",
-    company: "SST",
-    color: "hsla(39, 95%, 77%, 1)",
-    talkTitle: "How SST makes serverless ready",
+  kjerniga: {
+    name: "Kevin Jernigan",
+    twitter: "kjerniga",
+    link: "https://www.mongodb.com",
+    title: "Principal Product Manager at MongoDB",
+    company: "MongoDB",
+    color: "hsla(79, 100%, 51%, 1)",
+    talkTitle:
+      "The most flexible data platform for building serverless applications",
     talkDescription:
-      "Let's take a tour of everything that's new in SST v2. And how it makes serverless finally ready!",
-    logo: { src: sst, width: "281", height: "81" },
-    logoSmall: { src: sst, width: "235", height: "68" },
-    logoMono: { src: sstMono, width: "114", height: "33" },
-    logoMonoSmall: { src: sstMono, width: "110", height: "32" },
-    profile: { src: dax, width: "524", height: "554" },
-    profileSmall: { src: daxSmall, width: "94", height: "94" },
-    profileMobile: { src: daxMobile, width: "317", height: "350" },
-    nameImage: { src: daxName, width: "330", height: "68" },
-    nameImageSmall: { src: daxNameSmall, width: "226", height: "104" },
-    shareImagePath: "/dax.png",
+      "Enjoy the flexibility of MongoDB with the added benefit of instant, elastic scaling and an operations-based pricing model that only charges for what you use. Join Kevin Jernigan, Principal Product Manager at MongoDB and Suraj Shetty, Senior Solutions Architect to learn more.",
+    logo: { src: mongo, width: "363", height: "91" },
+    logoSmall: { src: mongo, width: "235", height: "68" },
+    logoMono: { src: mongoMono, width: "156", height: "39" },
+    logoMonoSmall: { src: mongoMono, width: "110", height: "32" },
+    profile: { src: kevin, width: "532", height: "532" },
+    profileSmall: { src: kevinSmall, width: "94", height: "94" },
+    profileMobile: { src: kevinMobile, width: "532", height: "532" },
+    nameImage: { src: kevinName, width: "576", height: "68" },
+    nameImageSmall: { src: kevinNameSmall, width: "226", height: "104" },
+    shareImagePath: "/kevin.png",
+  },
+  adamdotdev: {
+    name: "Adam Elmore",
+    twitter: "adamdotdev",
+    link: "https://adam.dev",
+    title: "AWS DevTools Hero",
+    company: "Adam.dev",
+    color: "hsla(167, 70%, 48%, 1)",
+    talkTitle: "Serverless at Twitter scale",
+    talkDescription:
+      "A look at how you can use serverless architecture to build systems that can handle all of Twitters traffic, without managing any of the infrastructure yourself.",
+    logo: { src: adamdev, width: "302", height: "45" },
+    logoSmall: { src: adamdev, width: "242", height: "36" },
+    logoMono: { src: adamdevMono, width: "155", height: "23" },
+    logoMonoSmall: { src: adamdevMono, width: "119", height: "18" },
+    profile: { src: adam, width: "524", height: "554" },
+    profileSmall: { src: adamSmall, width: "93", height: "93" },
+    profileMobile: { src: adamMobile, width: "373", height: "394" },
+    nameImage: { src: adamName, width: "453", height: "68" },
+    nameImageSmall: { src: adamNameSmall, width: "291", height: "104" },
+    shareImagePath: "/adam.png",
   },
   raoufdevrel: {
     name: "Raouf Chebri",
