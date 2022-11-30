@@ -1,0 +1,101 @@
+---
+import "material-icons/iconfont/filled.css";
+import TwitterIcon from "./TwitterIcon.astro";
+
+interface Props {
+  link: string;
+  title: string;
+  color: string;
+  twitter: string;
+}
+
+const { link, title, color, twitter } = Astro.props;
+const profileUrl = `/speakers/${twitter}.html`;
+---
+<style define:vars={{ speakerColor: color }}>
+  .panel {
+    display: flex;
+    justify-content: space-between;
+    min-width: 0;
+    overflow: hidden;
+  }
+  .image {
+    flex: 0 1 0;
+    min-width: 0;
+  }
+  .image img {
+    display: block;
+  }
+  .content {
+    padding-bottom: 23rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+  }
+  .profile {
+    margin-top: 120rem;
+  }
+  h4 {
+    margin: 0 0 2rem;
+    font-size: 33rem;
+    font-weight: bold;
+    line-height: 38rem;
+    font-family: var(--font-body);
+    color: var(--speakerColor);
+    text-shadow: 3px 1px 0 #000;
+  }
+  h4 a {
+    vertical-align: -2px;
+  }
+  h4 a :global(svg) {
+    color: var(--speakerColor);
+    width: 24rem;
+    height: 24rem;
+  }
+  .button {
+    opacity: 0.7;
+    text-shadow:
+      1px 1px 0 #000,
+      -1px -1px 0 hsla(var(--color-orange), 0.4);
+  }
+  .button span:first-child {
+    font-size: 24rem;
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+  }
+  .button span.material-icons {
+    margin-left: -5px;
+    font-size: 32rem;
+    vertical-align: -7px;
+  }
+
+  @media only screen and (max-width: 1280px) {
+    .content a:first-child {
+      align-self: flex-end;
+    }
+  }
+</style>
+<div class="panel">
+  <div class="image">
+    <slot name="image" />
+  </div>
+  <div class="content">
+    <a target="_blank" href={link}>
+      <slot name="logo" />
+    </a>
+    <div class="profile">
+      <a href={profileUrl}><slot name="name" /></a>
+      <h4>
+        <span>{title}</span>
+        <a target="_blank" href={`https://twitter.com/${twitter}`}>
+          <TwitterIcon />
+        </a>
+      </h4>
+      <a href={profileUrl} class="button">
+        <span>Learn more</span><span class="material-icons">play_arrow</span>
+      </a>
+    </div>
+  </div>
+</div>

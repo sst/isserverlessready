@@ -1,0 +1,40 @@
+---
+import "../styles/normalize.css";
+import "../styles/theme.css";
+import "../styles/index.css";
+
+import Head from "../components/Head.astro";
+import { AstroConfigSchema } from "astro/dist/core/config";
+---
+<style>
+  section {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  h1 {
+    margin: 0 0 var(--spacing-unit);
+    text-transform: uppercase;
+  }
+  p {
+    margin: 0;
+    font-size: 20rem;
+  }
+</style>
+
+<html lang="en">
+	<head>
+		<Head />
+		<title>Not found</title>
+	</head>
+	<body>
+    <section>
+      <h1>Page not found</h1>
+      <p><a href="/">Go back home</a></p>
+    </section>
+	</body>
+</html>
+
+

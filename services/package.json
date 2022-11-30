@@ -1,0 +1,10 @@
+{
+  "name": "@isserverlessready/services",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {},
+  "dependencies": {
+    "@serverless-stack/node": "^1.17.1",
+    "node-fetch": "^3.2.10"
+  }
+}

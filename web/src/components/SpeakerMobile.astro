@@ -1,0 +1,72 @@
+---
+import "material-icons/iconfont/filled.css";
+
+interface Props {
+  name: string;
+  title: string;
+  color: string;
+  twitter: string;
+}
+
+const { name, title, color, twitter } = Astro.props;
+---
+<style define:vars={{ speakerColor: color }}>
+  a {
+    padding: 24rem calc(var(--spacing-unit) / 2) 20rem;
+    color: var(--theme-text);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+  .content {
+    margin-left: 12rem;
+    flex: 1 1 auto;
+  }
+  .content :global(img) {
+    display: block;
+    filter: grayscale(1);
+  }
+  h4 {
+    margin: 8rem 0 3rem;
+    font-size: 20rem;
+    font-weight: bold;
+    line-height: 23rem;
+    font-family: var(--font-body);
+    color: var(--speakerColor);
+    text-shadow: 3px 1px 0 #000;
+  }
+  p {
+    margin: 0;
+    font-size: 16rem;
+    font-weight: bold;
+    line-height: 19rem;
+    font-family: var(--font-body);
+    color: var(--theme-text-light);
+  }
+  span.material-icons {
+    font-size: 34rem;
+    opacity: 0.7;
+    text-shadow:
+      -1px -1px 0 hsla(var(--color-white), 0.4),
+      1px 0 0 hsla(268, 12%, 39%, 1);
+  }
+
+  @media only screen and (max-width: 320px) {
+    .content :global(img) {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+</style>
+<a href={`/speakers/${twitter}.html`}>
+  <slot name="image" />
+  <div class="content">
+    <slot name="logo" />
+    <h4>{name}</h4>
+    <p>{title}</p>
+  </div>
+  <span class="material-icons">play_arrow</span>
+</a>

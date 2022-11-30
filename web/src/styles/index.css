@@ -1,0 +1,29 @@
+html {
+  font-size: 1px;
+}
+html, button, input, select, textarea {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16rem;
+  font-weight: 400;
+  line-height: var(--line-height);
+  color: var(--theme-text);
+  background-color: var(--theme-bg);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+a {
+  color: var(--theme-accent);
+  text-underline-offset: 3rem;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}

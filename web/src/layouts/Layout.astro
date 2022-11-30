@@ -1,0 +1,72 @@
+---
+import "../styles/normalize.css";
+import "../styles/theme.css";
+import "../styles/index.css";
+
+import { SITE } from "../config";
+
+import Head from "../components/Head.astro";
+import Footer from "../components/Footer.astro";
+import Register from "../components/Register.astro";
+
+import heroVideo from "../assets/hero-bg.mp4";
+import heroImage from "../assets/hero-bg.png";
+---
+<style>
+	body {
+		scroll-snap-type: y mandatory;
+		scroll-behavior: smooth;
+	}
+	.hero-image,
+	.hero-video {
+		width: 100vw;
+		height: 100vh;
+		object-fit: cover;
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		z-index: -1;
+	}
+	.hero-video {
+		display: none;
+	}
+</style>
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		const video = document.querySelector("body > video") as HTMLVideoElement;
+
+		// Show once the video starts playing to avoid
+		// flashing video of the wrong size
+		video.addEventListener("playing", event => {
+			video.style.display = "block";
+		});
+
+		// Handle cannot play errors
+		video
+			.play()
+			.catch((err) => {
+				// Cannot play video 
+			});
+	});
+</script>
+<html lang="en">
+	<head>
+		<Head />
+		<slot name="title"><title>{SITE.title}</title></slot>
+		<meta name="description" content={SITE.description} />
+		<slot name="title"><title>{SITE.title}</title></slot>
+		<slot name="share"><meta property="og:image" content="/share.png"></slot>
+	</head>
+	<body>
+		<img class="hero-image" src={heroImage} />
+		<video class="hero-video" playsinline muted loop>
+			<source src={heroVideo} type="video/mp4" />
+		</video>
+		<slot />
+		<Register />
+		<Footer />
+	</body>
+</html>
+

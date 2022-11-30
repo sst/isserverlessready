@@ -1,0 +1,39 @@
+---
+interface Props {
+  logo: string;
+  width: string;
+  height: string;
+  name: string;
+}
+
+const { logo, width, height, name } = Astro.props;
+---
+<style>
+  .item {
+    display: block;
+    display: flex;
+    align-items: center;
+    height: 70px;
+  }
+  p {
+    margin: 0;
+    font-size: 20rem;
+    font-weight: bold;
+    color: var(--theme-text-light);
+    opacity: 0.9;
+  }
+  .image {
+    flex: 0 0 auto;
+    min-width: 160px;
+  }
+  img {
+    display: block;
+    opacity: 0.7;
+  }
+</style>
+<div class="item">
+  <div class="image">
+    <img src={logo} width={width} height={height} alt={name} />
+  </div>
+  <p>{name}</p>
+</div>
