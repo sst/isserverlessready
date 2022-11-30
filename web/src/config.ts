@@ -113,7 +113,7 @@ interface Speaker {
 
 export const SITE: Site = {
   title: "Is serverless ready?",
-  repo: "https://github.com/jayair/isserverlessready",
+  repo: "https://github.com/serverless-stack/isserverlessready",
   description:
     "A virtual showcase of the next generation of serverless tools and creators.",
 };
