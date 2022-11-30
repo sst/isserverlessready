@@ -21,13 +21,7 @@ function MyStack({ stack, app }: StackContext) {
     path: "web",
     errorPage: "404.html",
     buildCommand: "yarn run build",
-    customDomain:
-      app.stage === "prod"
-        ? {
-            hostedZone: "isserverlessready.com",
-            domainName: "preview.isserverlessready.com",
-          }
-        : undefined,
+    customDomain: app.stage === "prod" ? "isserverlessready.com" : undefined,
     environment: {
       PUBLIC_API_URL: api.url,
     },
