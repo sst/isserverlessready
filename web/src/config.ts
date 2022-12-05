@@ -224,27 +224,27 @@ export const SPEAKERS: Record<string, Speaker> = {
     nameImageSmall: { src: aaronNameSmall, width: "298", height: "104" },
     shareImagePath: "/aaron.png",
   },
-  JacobMGEvans: {
-    name: "Jacob MG Evans",
-    twitter: "JacobMGEvans",
-    link: "https://www.cloudflare.com/en-ca/",
-    title: "FullStack Cloudflare Workers",
-    company: "Cloudflare",
-    color: "hsla(31, 100%, 48%, 1)",
-    talkTitle: "How Workers Work for You",
-    talkDescription:
-      'An overview of Cloudflare Workers, the continued endeavors towards DX and the role Cloudflare CLI "Wrangler" plays in that.',
-    logo: { src: cloudflare, width: "329", height: "48" },
-    logoSmall: { src: cloudflare, width: "251", height: "37" },
-    logoMono: { src: cloudflareMono, width: "116", height: "17" },
-    logoMonoSmall: { src: cloudflare, width: "119", height: "17" },
-    profile: { src: jacob, width: "729", height: "558" },
-    profileSmall: { src: jacobSmall, width: "93", height: "94" },
-    profileMobile: { src: jacobMobile, width: "375", height: "382" },
-    nameImage: { src: jacobName, width: "576", height: "68" },
-    nameImageSmall: { src: jacobNameSmall, width: "291", height: "104" },
-    shareImagePath: "/jacob.png",
-  },
+  //  JacobMGEvans: {
+  //    name: "Jacob MG Evans",
+  //    twitter: "JacobMGEvans",
+  //    link: "https://www.cloudflare.com/en-ca/",
+  //    title: "FullStack Cloudflare Workers",
+  //    company: "Cloudflare",
+  //    color: "hsla(31, 100%, 48%, 1)",
+  //    talkTitle: "How Workers Work for You",
+  //    talkDescription:
+  //      'An overview of Cloudflare Workers, the continued endeavors towards DX and the role Cloudflare CLI "Wrangler" plays in that.',
+  //    logo: { src: cloudflare, width: "329", height: "48" },
+  //    logoSmall: { src: cloudflare, width: "251", height: "37" },
+  //    logoMono: { src: cloudflareMono, width: "116", height: "17" },
+  //    logoMonoSmall: { src: cloudflare, width: "119", height: "17" },
+  //    profile: { src: jacob, width: "729", height: "558" },
+  //    profileSmall: { src: jacobSmall, width: "93", height: "94" },
+  //    profileMobile: { src: jacobMobile, width: "375", height: "382" },
+  //    nameImage: { src: jacobName, width: "576", height: "68" },
+  //    nameImageSmall: { src: jacobNameSmall, width: "291", height: "104" },
+  //    shareImagePath: "/jacob.png",
+  //  },
   enesakar: {
     name: "Enes Akar",
     twitter: "enesakar",
@@ -331,3 +331,6 @@ export const SPEAKERS: Record<string, Speaker> = {
     shareImagePath: "/raouf.png",
   },
 };
+
+export const NEXT_SPEAKER: Speaker = SPEAKERS.thdxr;
+export const NEXT_DATE = "Dec 6";

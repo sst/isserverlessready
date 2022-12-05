@@ -1,0 +1,222 @@
+---
+import { NEXT_DATE, NEXT_SPEAKER } from "../config";
+import "material-icons/iconfont/filled.css";
+import TwitterIcon from "./TwitterIcon.astro";
+
+const {
+  name, link, title, color, twitter, logo, logoSmall, nameImage, nameImageSmall, profile, profileMobile
+} = NEXT_SPEAKER;
+const profileUrl = `/speakers/${twitter}.html`;
+---
+<style define:vars={{ speakerColor: color }}>
+  section {
+    padding: var(--spacing-unit) var(--spacing-unit) calc(var(--spacing-unit) * 3.5);
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: var(--max-width);
+  }
+  h2 {
+    margin: 0;
+    font-size: 60rem;
+    text-transform: uppercase;
+    text-shadow: 2px 5px 0 #000;
+    line-height: 1;
+  }
+  div.speaker {
+    box-sizing: border-box;
+    padding: calc(var(--spacing-unit) * 3.5) var(--spacing-unit) calc(var(--spacing-unit) * 2) 0;
+    display: flex;
+    align-items: center;
+  }
+  .logo-mobile {
+    display: none;
+  }
+  .content {
+    margin-left: calc(var(--spacing-unit) * 1.5);
+  }
+  h4 {
+    margin: 0 0 2rem;
+    font-size: 33rem;
+    font-weight: bold;
+    line-height: 38rem;
+    font-family: var(--font-body);
+    color: var(--speakerColor);
+    text-shadow: 3px 1px 0 #000;
+  }
+  h4 a {
+    color: var(--speakerColor);
+  }
+  h4 a:hover {
+    text-decoration: none;
+  }
+  h4 a:last-child {
+    vertical-align: -2px;
+  }
+  h4 a:last-child :global(svg) {
+    color: var(--speakerColor);
+    width: 24rem;
+    height: 24rem;
+  }
+  .button {
+    opacity: 0.7;
+    text-shadow:
+      1px 1px 0 #000,
+      -1px -1px 0 hsla(var(--color-orange), 0.4);
+  }
+  .button span:first-child {
+    font-size: 24rem;
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+  }
+  .button span.material-icons {
+    margin-left: -5px;
+    font-size: 32rem;
+    vertical-align: -7px;
+  }
+  .image {
+    flex: 0 1 auto;
+    min-width: 480px;
+  }
+  .image img:last-child {
+    display: none;
+  }
+  .content {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+  }
+  .content h3 {
+    margin: 64rem 0 0;
+    font-family: var(--font-body);
+    font-weight: bold;
+    font-style: italic;
+    font-size: 48rem;
+    line-height: 56rem;
+    text-transform: uppercase;
+  }
+  .content h3 a {
+    color: var(--theme-text);
+  }
+  .content h3 a:hover {
+    text-decoration: none;
+  }
+  .content p {
+    line-height: 1.25;
+    color: var(--theme-text-light);
+  }
+  .content .name {
+    display: block;
+  }
+  .content .name img:last-child {
+    display: none;
+  }
+
+  @media only screen and (max-width: 800px) {
+    section {
+      padding: var(--spacing-unit) 0 105rem;
+    }
+    h2 {
+      margin-bottom: 50rem;
+      font-size: 55rem;
+      text-align: center;
+      padding: 0 calc(var(--spacing-unit) / 2);
+    }
+    div.speaker {
+      text-align: center;
+      padding: 43rem 0 48rem;
+      display: block;
+    }
+    .logo-mobile {
+      display: block;
+    }
+    .image {
+      min-width: auto;
+    }
+    .image img:first-child {
+      display: none;
+    }
+    .image img:last-child {
+      display: block;
+    }
+    .image img {
+      margin-top: 3rem;
+      width: 100%;
+      height: auto;
+    }
+    .content {
+      margin-left: 0;
+      margin-top: -51rem;
+      padding: 0 calc(var(--spacing-unit) / 2);
+    }
+    .content > a:first-child {
+      display: none;
+    }
+    .content .name {
+      margin-bottom: 10rem;
+    }
+    .content .name img:first-child {
+      display: none;
+    }
+    .content .name img:last-child {
+      margin: 0 auto;
+      display: block;
+      width: auto;
+      max-width: 100%;
+      height: auto;
+    }
+    .content h2 {
+      font-size: 40rem;
+      line-height: 47rem;
+    }
+    h4 {
+      font-size: 24rem;
+      line-height: 28rem;
+    }
+    h4 a:last-child {
+      margin-left: -3px;
+      vertical-align: -3px;
+    }
+    h4 a :global(svg) {
+      width: 19rem;
+      height: 19rem;
+    }
+  }
+  @media only screen and (max-width: 320px) {
+    h2 {
+      font-size: 50rem;
+    }
+  }
+</style>
+<section id="next">
+  <h2>Next Episode: {NEXT_DATE}</h2>
+  <div class="speaker">
+    <a class="logo-mobile" target="_blank" href={NEXT_SPEAKER.link}>
+      <img src={logoSmall.src} width={logoSmall.width} height={logoSmall.height} alt={NEXT_SPEAKER.company} />
+    </a>
+    <a class="image" href={profileUrl}>
+      <img src={profile.src} width={profile.width} height={profile.height} alt={NEXT_SPEAKER.name} />
+      <img src={profileMobile.src} width={profileMobile.width} height={profileMobile.height} alt={NEXT_SPEAKER.name} />
+    </a>
+    <div class="content">
+      <a target="_blank" href={NEXT_SPEAKER.link}>
+        <img src={logo.src} width={logo.width} height={logo.height} alt={NEXT_SPEAKER.company} />
+      </a>
+      <a class="name" href={profileUrl}>
+        <img src={nameImage.src} width={nameImage.width} height={nameImage.height} alt={NEXT_SPEAKER.name} />
+        <img src={nameImageSmall.src} alt={NEXT_SPEAKER.name} />
+      </a>
+      <h4>
+        <a href={profileUrl}>{NEXT_SPEAKER.title}</a>
+        <a target="_blank" href={`https://twitter.com/${NEXT_SPEAKER.twitter}`}>
+          <TwitterIcon />
+        </a>
+      </h4>
+      { NEXT_SPEAKER.talkTitle &&
+        <h3><a href={profileUrl}>&ldquo;{NEXT_SPEAKER.talkTitle}&rdquo;</a></h3>
+      }
+      <a href={profileUrl} class="button">
+        <span>Learn more</span><span class="material-icons">play_arrow</span>
+      </a>
+    </div>
+  </div>
+</section>

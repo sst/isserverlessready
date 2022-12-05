@@ -1,14 +1,13 @@
 ---
-import { SPEAKERS } from "../config";
+import { SPEAKERS, NEXT_SPEAKER } from "../config";
+import SpeakerList from "./SpeakerList.astro";
+import "material-icons/iconfont/filled.css";
 
-import Speaker from "./Speaker.astro";
-import SpeakerMobile from "./SpeakerMobile.astro";
-import SpeakerPickerItem from "./SpeakerPickerItem.astro";
+const speakers = Object.keys(SPEAKERS).filter(key => key !== NEXT_SPEAKER.twitter);
 ---
 <style>
   section {
-    padding: 124rem calc(var(--spacing-unit) * 2) 105rem;
-    padding: var(--spacing-unit) calc(var(--spacing-unit) * 2) 105rem;
+    padding: calc(var(--spacing-unit) * 3.5) var(--spacing-unit);
     box-sizing: border-box;
     margin: 0 auto;
     max-width: var(--max-width);
@@ -21,43 +20,37 @@ import SpeakerPickerItem from "./SpeakerPickerItem.astro";
   }
   #speakers {
     margin-top: 16rem;
+  }
+  ul {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: block;
+    list-style: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  ul li {
+    margin: 0;
+    display: block;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  ul li a.contact {
+    padding: var(--spacing-unit) calc(var(--spacing-unit) / 2);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    color: var(--theme-text-light);
+    font-weight: bold;
+    font-size: 20rem;
+    line-height: 1.3;
   }
-  ul.mobile {
-    display: none;
+  ul li a.contact:hover {
+    text-decoration: none;
   }
-  .tabs {
-    flex: 0 0 auto;
-  }
-  .tab-button {
-    opacity: 0.5;
-    cursor: pointer;
-  }
-  .tab-button :global(img) {
-    filter: grayscale(1);
-  }
-  .tab-button.active {
-    opacity: 1;
-    cursor: default;
-  }
-  .speaker {
-    margin-left: var(--spacing-unit);
-    min-width: 0;
-  }
-  .tab-content {
-    animation: fade-effect 1s;
-  }
-  .profile-image {
-    display: block;
-  }
-  #speakers.ready .tab-content {
-    /** Disabled animation for first load */
-    animation-duration: 0s;
-  }
-  .tab-content:not(:first-child) {
-    display: none;
+  ul li a.contact span:last-child {
+    margin-left: 10px;
+    margin-top: 3px;
+    font-size: 34rem;
   }
 
   @media only screen and (max-width: 800px) {
@@ -70,161 +63,54 @@ import SpeakerPickerItem from "./SpeakerPickerItem.astro";
       line-height: 1;
       text-align: center;
     }
-    .tabs, .speaker {
-      display: none;
-    }
-    ul.mobile {
-      width: 100%;
-      margin: 0;
-      padding: 0;
-      display: block;
-      list-style: none;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    ul.mobile li {
-      margin: 0;
-      display: block;
-      border-top: 1px solid rgba(255, 255, 255, 0.2);
-    }
   }
   @media only screen and (max-width: 320px) {
     h2 {
       font-size: 50rem;
     }
   }
-
-  @keyframes fade-effect {
-    from {opacity: 0;}
-    to {opacity: 1;}
-  }
 </style>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const tabs = document.querySelectorAll(".tab-content") as NodeListOf<HTMLElement>;
-  const buttons = document.querySelectorAll(".tab-button") as NodeListOf<HTMLElement>;
+<section id="schedule">
+  <h2>Coming up</h2>
+  <ul>
+    {speakers.map((id, i) => {
+      const speaker = SPEAKERS[id];
+      const {
+        name, title, color, logoMonoSmall, twitter, profileSmall
+      } = speaker;
 
-  function openTab(ev: Event, id?: string) {
-    const target = ev.target as HTMLElement;
-
-    tabs.forEach(tab => {
-      tab.style.display = tab.dataset.id === id ? "block" : "none";
-    });
-
-    buttons.forEach(button => {
-      if (button.dataset.id === id) {
-        button.classList.add("active");
-      } else {
-        button.classList.remove("active");
-      }
-    });
-  }
-
-  setTimeout(() => {
-    document.getElementById("speakers")?.classList.remove("ready");
-  }, 1000);
-
-  buttons.forEach(button => {
-    button.addEventListener("click", ev => openTab(ev, button.dataset.id));
-  });
-});
-</script>
-<section>
-  <h2>Speakers</h2>
-  <div id="speakers" class="ready">
-    <div class="tabs">
-      {Object.keys(SPEAKERS).map((id, i) => {
-        const speaker = SPEAKERS[id];
-        const { name, logoMono } = speaker;
-        const activeCs = i === 0 ? "active" : "";
-
-        return (
-          <div class={`tab-button ${activeCs}`} data-id={id}>
-            <SpeakerPickerItem
-              name={name}
-              logo={logoMono.src}
-              width={logoMono.width}
-              height={logoMono.height}
+      return (
+        <li>
+          <SpeakerList
+            name={name}
+            title={title}
+            color={color}
+            twitter={twitter}
+          >
+            <img
+              slot="logo"
+              src={logoMonoSmall.src}
+              width={logoMonoSmall.width}
+              height={logoMonoSmall.height}
+              alt={speaker.company}
             />
-          </div>
-        );
-      })}
-    </div>
-    <div class="speaker">
-      {Object.keys(SPEAKERS).map((id, i) => {
-        const speaker = SPEAKERS[id];
-        const {
-          name, link, title, color, twitter, logo, nameImage, profile
-        } = speaker;
-
-        return (
-          <div class="tab-content" data-id={id}>
-            <Speaker
-              link={link}
-              title={title}
-              color={color}
-              twitter={twitter}
-            >
-              <img
-                slot="logo"
-                src={logo.src}
-                width={logo.width}
-                height={logo.height}
-                alt={speaker.company}
-              />
-              <img
-                slot="image"
-                class="profile-image"
-                src={profile.src}
-                width={profile.width}
-                height={profile.height}
-                alt={speaker.name}
-              />
-              <img
-                slot="name"
-                src={nameImage.src}
-                width={nameImage.width}
-                height={nameImage.height}
-                alt={name}
-              />
-            </Speaker>
-          </div>
-        );
-      })}
-    </div>
-    <ul class="mobile">
-      {Object.keys(SPEAKERS).map((id, i) => {
-        const speaker = SPEAKERS[id];
-        const {
-          name, title, color, logoMonoSmall, twitter, profileSmall
-        } = speaker;
-
-        return (
-          <li>
-            <SpeakerMobile
-              name={name}
-              title={title}
-              color={color}
-              twitter={twitter}
-            >
-              <img
-                slot="logo"
-                src={logoMonoSmall.src}
-                width={logoMonoSmall.width}
-                height={logoMonoSmall.height}
-                alt={speaker.company}
-              />
-              <img
-                slot="image"
-                class="profile-image"
-                src={profileSmall.src}
-                width={profileSmall.width}
-                height={profileSmall.height}
-                alt={speaker.name}
-              />
-            </SpeakerMobile>
-          </li>
-        );
-      })}
-    </ul>
-  </div>
+            <img
+              slot="image"
+              class="profile-image"
+              src={profileSmall.src}
+              width={profileSmall.width}
+              height={profileSmall.height}
+              alt={speaker.name}
+            />
+          </SpeakerList>
+        </li>
+      );
+    })}
+    <li>
+      <a class="contact" href="mailto:hello@sst.dev?subject=Count me in">
+        <span>Reach out if you want to join the showcase.</span>
+        <span class="material-icons">add</span>
+      </a>
+    </li>
+  </ul>
 </section>
