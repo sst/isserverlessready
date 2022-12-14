@@ -13,7 +13,7 @@
   "dependencies": {
     "@astrojs/prefetch": "^0.1.1",
     "@serverless-stack/static-site-env": "^1.17.1",
-    "astro": "^1.6.0",
+    "astro": "1.6.0",
     "material-icons": "^1.12.1"
   }
 }
