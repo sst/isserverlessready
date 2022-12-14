@@ -1,8 +1,8 @@
 ---
-import { SITE, SPEAKERS } from "../../config";
-
 import Layout from "../../layouts/Layout.astro";
 import TwitterIcon from "../../components/TwitterIcon.astro";
+
+import { SITE, SPEAKERS } from "../../config";
 
 export function getStaticPaths() {
   return Object.keys(SPEAKERS).map(speaker => {
@@ -182,9 +182,7 @@ const { logo, logoSmall, profile, profileMobile, nameImage, nameImageSmall, shar
     }
   }
 </style>
-<Layout>
-  <title slot="title">{speaker.name} / {SITE.title}</title>
-  <meta slot="share" property="og:image" content={shareImagePath}>
+<Layout title={`${speaker.name} / ${SITE.title}`} shareImage={shareImagePath}>
   <section>
     <header>
       <a href="/" class="home"><h3>{SITE.title}</h3></a>

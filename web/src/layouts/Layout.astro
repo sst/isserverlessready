@@ -11,6 +11,13 @@ import Register from "../components/Register.astro";
 
 import heroVideo from "../assets/hero-bg.mp4";
 import heroImage from "../assets/hero-bg.png";
+
+interface Props {
+  title?: string;
+  shareImage?: string;
+}
+
+const { title, shareImage } = Astro.props;
 ---
 <style>
 	body {
@@ -54,10 +61,9 @@ import heroImage from "../assets/hero-bg.png";
 <html lang="en">
 	<head>
 		<Head />
-		<slot name="title"><title>{SITE.title}</title></slot>
+		<title>{title || SITE.title}</title>
 		<meta name="description" content={SITE.description} />
-		<slot name="title"><title>{SITE.title}</title></slot>
-		<slot name="share"><meta property="og:image" content="/share.png"></slot>
+		<meta property="og:image" content={shareImage || "/share.png"} />
 	</head>
 	<body>
 		<img class="hero-image" src={heroImage} />
