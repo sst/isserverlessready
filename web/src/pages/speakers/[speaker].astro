@@ -16,7 +16,7 @@ export function getStaticPaths() {
 const { speaker } = Astro.props;
 const { logo, logoSmall, profile, profileMobile, nameImage, nameImageSmall, shareImagePath } = speaker;
 ---
-<style define:vars={{ speakerColor: speaker.color }}>
+<style>
   section {
     margin: 0 auto;
     max-width: var(--max-width);
@@ -73,14 +73,12 @@ const { logo, logoSmall, profile, profileMobile, nameImage, nameImageSmall, shar
     font-weight: bold;
     line-height: 38rem;
     font-family: var(--font-body);
-    color: var(--speakerColor);
     text-shadow: 3px 1px 0 #000;
   }
   h4 a {
     vertical-align: -2px;
   }
   h4 a :global(svg) {
-    color: var(--speakerColor);
     width: 24rem;
     height: 24rem;
   }
@@ -204,9 +202,9 @@ const { logo, logoSmall, profile, profileMobile, nameImage, nameImageSmall, shar
           <img src={nameImage.src} width={nameImage.width} height={nameImage.height} alt={speaker.name} />
           <img src={nameImageSmall.src} alt={speaker.name} />
         </span>
-        <h4>
+        <h4 style={`color: ${speaker.color}`}>
           <span>{speaker.title}</span>
-          <a target="_blank" href={`https://twitter.com/${speaker.twitter}`}>
+          <a target="_blank" href={`https://twitter.com/${speaker.twitter}`} style={`color: ${speaker.color}`}>
             <TwitterIcon />
           </a>
         </h4>

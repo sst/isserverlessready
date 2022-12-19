@@ -10,7 +10,7 @@ interface Props {
 
 const { name, title, color, twitter } = Astro.props;
 ---
-<style define:vars={{ speakerColor: color }}>
+<style>
   a {
     padding: 24rem calc(var(--spacing-unit) / 2) 20rem;
     color: var(--theme-text);
@@ -35,7 +35,6 @@ const { name, title, color, twitter } = Astro.props;
     font-weight: bold;
     line-height: 23rem;
     font-family: var(--font-body);
-    color: var(--speakerColor);
     text-shadow: 3px 1px 0 #000;
   }
   p {
@@ -65,7 +64,7 @@ const { name, title, color, twitter } = Astro.props;
   <slot name="image" />
   <div class="content">
     <slot name="logo" />
-    <h4>{name}</h4>
+    <h4 style={`color: ${color}`}>{name}</h4>
     <p>{title}</p>
   </div>
   <span class="material-icons">play_arrow</span>

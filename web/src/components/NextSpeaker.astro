@@ -8,7 +8,7 @@ const {
 } = NEXT_SPEAKER;
 const profileUrl = `/speakers/${twitter}.html`;
 ---
-<style define:vars={{ speakerColor: color }}>
+<style>
   section {
     padding: var(--spacing-unit) var(--spacing-unit) calc(var(--spacing-unit) * 3.5);
     box-sizing: border-box;
@@ -205,9 +205,9 @@ const profileUrl = `/speakers/${twitter}.html`;
         <img src={nameImage.src} width={nameImage.width} height={nameImage.height} alt={NEXT_SPEAKER.name} />
         <img src={nameImageSmall.src} alt={NEXT_SPEAKER.name} />
       </a>
-      <h4>
+      <h4 style={`color: ${color}`}>
         <a href={profileUrl}>{NEXT_SPEAKER.title}</a>
-        <a target="_blank" href={`https://twitter.com/${NEXT_SPEAKER.twitter}`}>
+        <a target="_blank" href={`https://twitter.com/${NEXT_SPEAKER.twitter}`} style={`color: ${color}`}>
           <TwitterIcon />
         </a>
       </h4>
