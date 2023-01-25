@@ -120,9 +120,9 @@ export const SITE: Site = {
 };
 
 export const SPEAKERS: Record<string, Speaker> = {
-  fredschott: {
+  FredKSchott: {
     name: "Fred K. Schott",
-    twitter: "fredschott",
+    twitter: "FredKSchott",
     link: "https://astro.build",
     title: "CEO at Astro",
     company: "Astro",
