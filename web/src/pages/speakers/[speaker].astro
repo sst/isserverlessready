@@ -14,7 +14,7 @@ export function getStaticPaths() {
 }
 
 const { speaker } = Astro.props;
-const { logo, logoSmall, profile, profileMobile, nameImage, nameImageSmall, shareImagePath } = speaker;
+const { logo, logoSmall, profile, episodeUrl, profileMobile, nameImage, nameImageSmall, shareImagePath } = speaker;
 ---
 <style>
   section {
@@ -113,6 +113,40 @@ const { logo, logoSmall, profile, profileMobile, nameImage, nameImageSmall, shar
   .content .name img:last-child {
     display: none;
   }
+  .content .button {
+    --button-bg: var(--theme-accent);
+    --button-hover-bg: hsla(var(--color-base-orange), 50%, 1);
+    --button-animate-bg: hsla(var(--color-base-orange), 30%, 1);
+
+    margin-top: 8rem;
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    background: var(--button-bg);
+    border: none;
+    padding: 16rem 32rem;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  .content .button:not(:disabled):hover {
+    background: var(--button-hover-bg);
+  }
+  .content .button span {
+    text-shadow:
+      1px 1px 0 hsla(268, 12%, 39%, 1),
+      -1px -1px 0 hsla(var(--color-orange), 0.4);
+  }
+  .content .button span:last-child {
+    font-size: 24rem;
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+  }
+  .content .button span.material-icons {
+    margin-right: 5px;
+    font-size: 31rem;
+    vertical-align: -6px;
+  }
 
   @media only screen and (max-width: 800px) {
     h3 {
@@ -179,6 +213,16 @@ const { logo, logoSmall, profile, profileMobile, nameImage, nameImageSmall, shar
       height: 19rem;
     }
   }
+
+  @media only screen and (max-width: 600px) {
+    .content .button {
+      display: block;
+      padding: 16rem 0;
+    }
+    .content .button span:last-child {
+      font-size: 20rem;
+    }
+  }
 </style>
 <Layout title={`${speaker.name} / ${SITE.title}`} shareImage={shareImagePath}>
   <section>
@@ -211,6 +255,12 @@ const { logo, logoSmall, profile, profileMobile, nameImage, nameImageSmall, shar
         { speaker.talkTitle &&
           <h2>&ldquo;{speaker.talkTitle}&rdquo;</h2>
           <p>{speaker.talkDescription}</p>
+        }
+        { episodeUrl &&
+          <a target="_blank" href={episodeUrl} class="button">
+            <span class="material-icons">smart_display</span>
+            <span>Watch on YouTube</span>
+          </a>
         }
       </div>
     </div>

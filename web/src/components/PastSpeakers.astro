@@ -1,0 +1,107 @@
+---
+import { SPEAKERS, PAST_SPEAKERS } from "../config";
+import SpeakerList from "./SpeakerList.astro";
+import "material-icons/iconfont/filled.css";
+---
+<style>
+  section {
+    padding: 0 var(--spacing-unit) calc(var(--spacing-unit) * 3.5);
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: var(--max-width);
+  }
+  h2 {
+    margin: 0;
+    font-size: 60rem;
+    text-transform: uppercase;
+    text-shadow: 2px 5px 0 #000;
+  }
+  #speakers {
+    margin-top: 16rem;
+  }
+  ul {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: block;
+    list-style: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  ul li {
+    margin: 0;
+    display: block;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  ul li a.contact {
+    padding: var(--spacing-unit) calc(var(--spacing-unit) / 2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--theme-text-light);
+    font-weight: bold;
+    font-size: 20rem;
+    line-height: 1.3;
+  }
+  ul li a.contact:hover {
+    text-decoration: none;
+  }
+  ul li a.contact span:last-child {
+    margin-left: 10px;
+    margin-top: 3px;
+    font-size: 34rem;
+  }
+
+  @media only screen and (max-width: 800px) {
+    section {
+      padding: var(--spacing-unit) 0 105rem;
+    }
+    h2 {
+      margin-bottom: 50rem;
+      font-size: 55rem;
+      line-height: 1;
+      text-align: center;
+    }
+  }
+  @media only screen and (max-width: 320px) {
+    h2 {
+      font-size: 50rem;
+    }
+  }
+</style>
+<section>
+  <h2>Past Episodes</h2>
+  <ul>
+    {PAST_SPEAKERS.map((speaker) => {
+      const {
+        name, title, color, logoMonoSmall, twitter, profileSmall
+      } = speaker;
+
+      return (
+        <li>
+          <SpeakerList
+            name={name}
+            title={title}
+            color={color}
+            twitter={twitter}
+          >
+            <img
+              slot="logo"
+              src={logoMonoSmall.src}
+              width={logoMonoSmall.width}
+              height={logoMonoSmall.height}
+              alt={speaker.company}
+            />
+            <img
+              slot="image"
+              class="profile-image"
+              src={profileSmall.src}
+              width={profileSmall.width}
+              height={profileSmall.height}
+              alt={speaker.name}
+            />
+          </SpeakerList>
+        </li>
+      );
+    })}
+  </ul>
+</section>

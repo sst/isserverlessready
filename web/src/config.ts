@@ -109,6 +109,7 @@ interface Speaker {
   nameImage: Image;
   nameImageSmall: Image;
   shareImagePath: string;
+  episodeUrl?: string;
 }
 
 export const SITE: Site = {
@@ -202,6 +203,7 @@ export const SPEAKERS: Record<string, Speaker> = {
     nameImage: { src: daxName, width: "330", height: "68" },
     nameImageSmall: { src: daxNameSmall, width: "226", height: "104" },
     shareImagePath: "/dax.png",
+    episodeUrl: "https://www.youtube.com/watch?v=qEKUNZWbj-8",
   },
   aarondfrancis: {
     name: "Aaron Francis",
@@ -332,5 +334,7 @@ export const SPEAKERS: Record<string, Speaker> = {
   },
 };
 
-export const NEXT_SPEAKER: Speaker = SPEAKERS.thdxr;
-export const NEXT_DATE = "Dec 6";
+export const NEXT_SPEAKER: Speaker = SPEAKERS.fredschott;
+export const NEXT_DATE = "Feb 1";
+
+export const PAST_SPEAKERS: Speaker[] = [SPEAKERS.thdxr];

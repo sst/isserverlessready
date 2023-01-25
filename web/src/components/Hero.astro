@@ -1,7 +1,7 @@
 ---
 import "material-icons/iconfont/filled.css";
 
-import { SITE } from "../config";
+import { SITE, NEXT_DATE } from "../config";
 ---
 <style>
   .hero {
@@ -76,7 +76,7 @@ import { SITE } from "../config";
   }
 </style>
 <section class="hero">
-  <h6>December 6</h6>
+  <h6>{NEXT_DATE}</h6>
   <h1>{SITE.title}</h1>
   <p>{SITE.description}</p>
   <a href="#register" class="button">
