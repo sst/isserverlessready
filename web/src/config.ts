@@ -334,7 +334,7 @@ export const SPEAKERS: Record<string, Speaker> = {
   },
 };
 
-export const NEXT_SPEAKER: Speaker = SPEAKERS.fredschott;
+export const NEXT_SPEAKER: Speaker = SPEAKERS.FredKSchott;
 export const NEXT_DATE = "Feb 1";
 
 export const PAST_SPEAKERS: Speaker[] = [SPEAKERS.thdxr];
